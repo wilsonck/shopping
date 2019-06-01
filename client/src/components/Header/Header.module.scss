@@ -1,75 +1,78 @@
 @import '../../sass/main.scss';
 
-
-/* ==========================================================================
-   Header
-   ========================================================================== */
-
-.header {
+.Header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-}
 
-.page-title {
-    font-size: 20px;
-}
+    .PageTitle {
+        font-size: 2rem;
+    }
 
-/* ==========================================================================
+
+   /* ==========================================================================
    Bag
    ========================================================================== */
 
-.header-bag {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-}
+    .HeaderBag {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
 
-.header-bag__item {
-    height: 25px;
+        .HeaderBag{
+            
+            &__item {
+                height: 2.5rem;
 
-    display: flex;
-    align-items: flex-end;
-}
+                display: flex;
+                align-items: flex-end;
 
-.header-bag__item .icon {
-    height: auto;
-    fill: #444A59;
-}
+                .Icon {
+                    height: auto;
+                    fill: $color-dark-gray;
+                }
 
-.header-bag__price {
-    margin-right: 5px;
-    font-size: 12px;
-    line-height: 12px;
-}
+                .HeaderBag__price {
+                    margin-right: .5rem;
+                    font-size: 1.2rem;
+                    line-height: 1.2rem;
+                
+                }
 
-.header-bag__count {
-    margin-left: 10px;
-}
+                .Bag__itemCounter {
+                    width: 1.3rem;
+                    height: 1.3rem;
+                    margin-left: -.1rem;
+            
+                    display: flex;
+                    align-self: flex-start;
+                    justify-content: center;
+                    align-items: center;
+            
+                    font-family: $font-bold, sans-serif;
+                    font-size: .8rem;
+                    text-align: center;
+            
+                    border-radius: 50%;
+                    color: #ffffff;
+                    background-color: #358ED7;
+                }
+            }
 
-.header-bag__count .icon {
-    width: 17px;
-}
+            &__wishlistCount {
+                margin-left: 1rem;
+            }
 
-.header-bag__wishlist-count {
-    margin-left: 10px;
-}
+            &__count {
+                margin-left: 1rem;
 
-.bag__item-counter {
-    width: 13px;
-    height: 13px;
-    margin-left: -1px;
+                .Icon {
+                    width: 1.7rem;
+                }
+            }
 
-    display: flex;
-    align-self: flex-start;
-    justify-content: center;
-    align-items: center;
+        }
+    
+    }
 
-    font-family: 'Lato-Bold', sans-serif;
-    font-size: 8px;
-    text-align: center;
-
-    border-radius: 50%;
-    color: #ffffff;
-    background-color: #358ED7;
 }
