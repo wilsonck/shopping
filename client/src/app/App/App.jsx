@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
+
 
 function App({ store, history }) {
-
-
-    
     return (
-        <h1>Que comecem os jogos</h1>
+        <Fragment>
+            <Header />
+            <Footer />
+        </Fragment>
     );
 }
 
