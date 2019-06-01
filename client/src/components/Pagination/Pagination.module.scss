@@ -1,0 +1,46 @@
+@import '../../sass/main.scss';
+
+
+.Pagination {
+    height: 45px;
+    margin: 30px auto;
+    text-align: center;
+
+    &__list {
+        height: 100%;
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+
+        .PaginationItem{
+            height: 100%;
+            width: 45px;
+            font-family: 'Lato-Bold', sans-serif;
+            font-size: 13px;
+            letter-spacing: 1.39px;
+            text-align: center;
+
+            .PaginationLink{
+                height: 100%;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: #444A59;
+
+                &:hover{
+                    text-decoration: underline;
+                }
+
+                .icon {
+                    width: 8px;
+                    fill: #444A59;
+                }
+            }
+
+        }
+
+
+    }
+
+}

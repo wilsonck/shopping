@@ -7,29 +7,28 @@
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    max-width: 1240px;
-    padding: 0 40px;
+    max-width: 124rem;
+    padding: 0 4rem;
     margin: 0 auto;
-    background-color: #ffffff;
-    height: 60px;
+    background-color: $color-white;
+    height: 6rem;
 
     .ProductControls{
 
         &__label{
-            margin-right: 5px;
-            font-family: 'Lato-Bold', sans-serif;
-            font-size: 14px;
-            letter-spacing: 1.37px;
+            margin-right: .5rem;
+            font-family: $font-bold, $second-font;
+            font-size: 1.4rem;
+            letter-spacing: .1.37rem;
         }
     
         &__select{
-            margin-right: 20px;
-            height: 30px;
-            min-width: 200px;
-            background-color: #ffffff;
+            margin-right: 2rem;
+            height: 3rem;
+            min-width: 20rem;
+            background-color: $color-white;
         }
 
     }
    
-
 }
