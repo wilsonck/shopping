@@ -1,0 +1,35 @@
+@import '../../sass/main.scss';
+
+
+.ProductControls{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    max-width: 1240px;
+    padding: 0 40px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    height: 60px;
+
+    .ProductControls{
+
+        &__label{
+            margin-right: 5px;
+            font-family: 'Lato-Bold', sans-serif;
+            font-size: 14px;
+            letter-spacing: 1.37px;
+        }
+    
+        &__select{
+            margin-right: 20px;
+            height: 30px;
+            min-width: 200px;
+            background-color: #ffffff;
+        }
+
+    }
+   
+
+}
