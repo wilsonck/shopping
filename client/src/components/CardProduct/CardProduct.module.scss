@@ -1,0 +1,74 @@
+@import '../../sass/main.scss';
+
+.Product{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    background-color: $color-white;
+
+    &__imageWrapper {
+        padding: 20px;
+        position: relative;
+        text-align: center;
+
+        .Product__image {
+            max-width: 100%;
+            height: auto;
+        }
+
+    }
+
+
+    &__details {
+        display: flex;
+        flex: 1 0 auto;
+        flex-direction: column;
+        padding: 10px 20px 20px;
+        text-align: center;
+
+        .Product{
+            
+            &__title {
+                padding-bottom: 10px; 
+                
+                font-family: 'Lato-Bold', sans-serif;
+                font-size: 14px;
+                letter-spacing: 1.37px;
+                text-transform: uppercase;
+            }
+        
+            &__subtitle {
+                padding-bottom: 10px; 
+            
+                font-size: 12px;
+                line-height: 19px;
+                letter-spacing: 0.43px;
+            
+                color: #808080;
+            }
+
+            &__price {
+                padding-bottom: 20px;
+                
+                font-family: 'Lato-Bold', sans-serif;
+                font-size: 14px;
+                letter-spacing: 2.33px;
+
+                .Product__price__strike {
+                    margin-right: 10px;
+                    text-decoration: line-through;
+                }
+                
+                .Product__price__discounted {
+                    color: #F54B5E;
+                }
+
+            }
+
+        }
+
+    }
+    
+    
+}

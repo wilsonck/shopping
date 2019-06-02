@@ -8,8 +8,8 @@ function Footer() {
     return (
         <nav className={classes.Pagination}>
             <ul className={classes.Pagination__list}>
-                <li class={classes.PaginationItem}>
-                    <a href="#" class={classes.PaginationLink}>
+                <li className={classes.PaginationItem}>
+                    <a href="#" className={classes.PaginationLink}>
                         <ArrowLeft className="icon" />
                         {/* <svg class="icon" width="8px" height="10px" viewBox="18 18 8 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>Arrow Left</title>
@@ -17,31 +17,31 @@ function Footer() {
                         </svg> */}
                     </a>
                 </li>
-                <li class={classes.PaginationItem}>
-                    <a href="#" class={classes.PaginationLink}>1</a>
+                <li className={classes.PaginationItem}>
+                    <a href="#" className={classes.PaginationLink}>1</a>
                 </li>
-                <li class={classes.PaginationItem}>
-                    <a href="#" class={classes.PaginationLink}>
+                <li className={classes.PaginationItem}>
+                    <a href="#" className={classes.PaginationLink}>
                         2
                     </a>
                 </li>
-                <li class={classes.PaginationItem}>
-                    <a href="#" class={classes.PaginationLink}>
+                <li className={classes.PaginationItem}>
+                    <a href="#" className={classes.PaginationLink}>
                         3
                     </a>
                 </li>
-                <li class={classes.PaginationItem}>
-                    <a href="#" class={classes.PaginationLink}>
+                <li className={classes.PaginationItem}>
+                    <a href="#" className={classes.PaginationLink}>
                         ...
                     </a>
                 </li>
-                <li class={classes.PaginationItem}>
-                    <a href="#" class={classes.PaginationLink}>
+                <li className={classes.PaginationItem}>
+                    <a href="#" className={classes.PaginationLink}>
                         10
                     </a>
                 </li>
-                <li class={classes.PaginationItem}>
-                    <a href="#" class={classes.PaginationLink}>
+                <li className={classes.PaginationItem}>
+                    <a href="#" className={classes.PaginationLink}>
                         <ArrowRight className="icon" />
                         {/* <svg class="icon" width="8px" height="10px" viewBox="18 18 8 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>Arrow Right</title>
