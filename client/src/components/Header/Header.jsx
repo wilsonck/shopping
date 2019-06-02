@@ -1,6 +1,8 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 
+import BadgeIcon from "../BadgeIcon/BadgeIcon";
+
 import { ReactComponent as BagIcon } from '../../assets/svg/bag.svg';
 import { ReactComponent as WishListIcon } from '../../assets/svg/wishlist.svg';
 
@@ -14,19 +16,19 @@ function Header() {
         <header className={getClassesToApply(classes.Header, "container")}>
             <h1 className={classes.PageTitle}>PRODUCT LIST</h1>
             <aside className={classes.HeaderBag}>
-                
-                <div className={getClassesToApply(classes.HeaderBag__item, classes.HeaderBag__count)}>
-                    <div className={classes.HeaderBag__price}>£210</div>
-                    <BagIcon className={getClassesToApply(classes.Icon, classes.BagIcon)} />
-                    <span className={classes.Bag__itemCounter}>10</span>
-                </div>
-
-
-                <div className={getClassesToApply(classes.HeaderBag__item, classes.HeaderBag__wishlistCount)}>
-                    <WishListIcon className={getClassesToApply(classes.Icon, classes.WishListIcon)} />
-                    <span className={classes.Bag__itemCounter}>5</span>
-                </div>
-
+                {/* Cart */}
+                <BadgeIcon
+                    className={classes.HeaderBag__count}
+                    counter="10"
+                    renderIcon={() => (<BagIcon className={getClassesToApply(classes.Icon, classes.BagIcon)} />)}
+                    price="£210"
+                />
+                {/* WishLIst */}
+                <BadgeIcon
+                    className={classes.HeaderBag__wishlistCount}
+                    counter="5"
+                    renderIcon={() => (<WishListIcon className={getClassesToApply(classes.Icon, classes.WishListIcon)} />)}
+                />
             </aside>
         </header>
     );
