@@ -10,6 +10,10 @@ class AbstractModel {
     return this.data;
   }
 
+  getById(id) {
+    return this.data.find(d => d.id === id);
+  }
+
   filterBy() {
 
   }

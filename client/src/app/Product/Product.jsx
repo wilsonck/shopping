@@ -50,7 +50,11 @@ class Product extends Component{
                         {products.map((prod, index) => {
                             return (
                                 <li key={`prod-${index}`} className={classes.ProductList__item}>
-                                    <CardProduct />
+                                    <CardProduct 
+                                        productName={prod.subtitle}
+                                        regularPrice={prod.price}
+                                        brandName={prod.brand}
+                                    />
                                 </li>
                             );
                         })}

@@ -1,8 +1,15 @@
 const orderBy = require('lodash/orderBy');
+const get = require('lodash/get');
+
 const Products = require('../models/Products');
+const Brands = require('../models/Brands');
 
 const getProducts = () => {
-    return Products.getAll();
+    const allProduct =  Products.getAll();
+    allProduct.forEach(prod => {
+        prod.brand = get(Brands.getById(prod.brandId), "name");
+    });
+    return allProduct;
 }
 
 const products = ({ brandId = null , id = null}) => {

@@ -28,10 +28,10 @@ function CardProduct({
                 </button>
             </figure>
             <div className={classes.Product__details}>
-                <h1 className={classes.Product__title} itemProp="brand">Brand name</h1>
-                <p className={classes.Product__subtitle} itemProp="description">Product title</p>
+                <h1 className={classes.Product__title} itemProp="brand">{brandName}</h1>
+                <p className={classes.Product__subtitle} itemProp="description">{productName}</p>
                 <div className={classes.Product__price} itemScope itemType="http://schema.org/Offer">
-                    <span className={classes.Product__price__strike}>£210</span>
+                    <span className={classes.Product__price__strike}>{regularPrice}</span>
                     <span className={classes.Product__price__discounted} itemProp="price">£210</span>
                 </div>
                 <button className="product__add-to-cart button button--primary">Add to Cart</button>
