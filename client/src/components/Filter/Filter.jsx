@@ -1,25 +1,39 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
+import Select from "../Select/Select"
 
 import classes from './Filter.module.scss';
 
-function Filter() {
+const optionsSortPrice = [
+    {
+        id: "asc",
+        name: "Price ascending"
+    }, {
+        id: "desc",
+        name: "Price descending"
+    }
+];
+
+function Filter({
+    optionsBrands,
+    sortProductsByPrice,
+    sortProductsByBrand
+}) {
 
     return (
         <div className={classes.ProductControls}>
-            <label className={classes.ProductControls__label} htmlFor="Brands-Filter">Brands: </label>
-            <select className={classes.ProductControls__select} id="Brands-Filter">
-                <option value="">All</option>
-                <option value="1">MCQ ALEXANDER MCQUEEN</option>
-                <option value="2">OFF-WHITE</option>                       
-                <option>...</option>
-            </select>
 
-            <label className={classes.ProductControls__label} htmlFor="Sort">Sort: </label>
-            <select className={classes.ProductControls__select} id="Sort">
-                <option value="1">Price ascending</option>
-                <option value="2">Price descending</option>           
-            </select>
+            <Select
+                label="Brands:"
+                options={optionsBrands}
+                actionChangeValue={sortProductsByBrand}
+            />
+
+            <Select
+                label="Sort:"
+                options={optionsSortPrice}
+                actionChangeValue={sortProductsByPrice}
+            />
         </div>
     );
 }

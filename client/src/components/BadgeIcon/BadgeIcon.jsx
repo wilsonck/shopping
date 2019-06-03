@@ -1,8 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-
-import { ReactComponent as BagIcon } from '../../assets/svg/bag.svg';
-import { ReactComponent as WishListIcon } from '../../assets/svg/wishlist.svg';
+import PropTypes from 'prop-types';
 
 import { getClassesToApply } from '../../helpers/formatter/Classes';
 
@@ -28,7 +25,10 @@ function Header({
 }
 
 Header.propTypes = {
-    
+    className: PropTypes.string,
+    renderIcon: PropTypes.func,
+    price: PropTypes.string,
+    counter: PropTypes.string,
 };
 
 Header.defaultProps = {

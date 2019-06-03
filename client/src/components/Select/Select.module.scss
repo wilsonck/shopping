@@ -1,0 +1,21 @@
+@import '../../sass/main.scss';
+
+
+.Select{
+
+    &__label{
+        margin-right: .5rem;
+        font-family: $font-bold, $second-font;
+        font-size: 1.4rem;
+        letter-spacing: .1.37rem;
+    }
+
+    &__select{
+        margin-right: 2rem;
+        height: 3rem;
+        min-width: 20rem;
+        background-color: $color-white;
+    }
+
+}
+   

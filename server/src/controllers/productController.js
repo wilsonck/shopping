@@ -22,15 +22,17 @@ exports.get = (req, res, next) => {
         const orderPrice = req.query.orderPrice
         productsFiltred = orderBy(productsFiltred, ['price'], [orderPrice.toLowerCase()])
     }
-
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.status(200).send(productsFiltred);
 };
 
 exports.getById = (req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.status(200).send('Requisição recebida com sucesso!');
 };
 
 exports.post = (req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.status(201).send('Requisição recebida com sucesso!');
 };
 

@@ -2,14 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import App from './app/App/App';
-// import createAppStore from './store';
+
+//Integration Redux
+import { Provider } from 'react-redux';
+import configureStore from './store/configureStore';
 
 import './sass/base/_reset.scss';
 
-// const store = createAppStore(history);
+const store = configureStore();
 
 const app = (
-    <App />
+    <Provider store={store}>
+        <App />
+    </Provider>
 );
 
 ReactDOM.render(app, document.getElementById('root'));

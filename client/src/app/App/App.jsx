@@ -1,10 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 import Product from '../Product/Product';
 
-function App({ store }) {
-    return (
-            <Product />
-        );
+function App() {
+    return (<Product />);
 }
 
 export default App;

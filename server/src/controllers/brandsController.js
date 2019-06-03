@@ -1,6 +1,8 @@
 const fs = require('fs');
+const Brands = require('../models/Brands');
 
 exports.get = (req, res, next) => {
-    const brands = JSON.parse(fs.readFileSync(__dirname + '/data/brands.json').toString());
-    res.status(200).send(brands);
+    let allBrands =  Brands.getAll();;
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.status(200).send(allBrands);
 };

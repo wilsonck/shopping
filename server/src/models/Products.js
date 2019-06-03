@@ -1,20 +1,9 @@
-const fs = require('fs');
+const AbstractModels = require('./AbstractModels');
 
-class Products {
-
+class Product extends AbstractModels {
   constructor() {
-    this.data = JSON.parse(fs.readFileSync(__dirname + '/data/products.json').toString());
+      super("products");
   }
-
-
-  getAll() {
-    return this.data;
-  }
-
-  filterBy() {
-
-  }
-
 }
 
-module.exports = new Products();
+module.exports = new Product();

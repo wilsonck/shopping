@@ -1,9 +1,10 @@
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+
 const app = express();
 app.use(session({
-  secret: '#$WilsonVai%&',
+  secret: '#$ShoppingCart%&',
   resave: false
 }));
 
@@ -22,8 +23,6 @@ const wishListRoute = require('./routes/wishListRoute');
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-
-
 
 app.use('/', index);
 app.use('/person', personRoute);

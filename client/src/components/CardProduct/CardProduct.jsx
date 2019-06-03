@@ -5,13 +5,20 @@ import { ReactComponent as WishListIcon } from '../../assets/svg/wishlist.svg';
 
 import classes from './CardProduct.module.scss';
 
-function CardProduct() {
+function CardProduct({
+    brandName,
+    productName,
+    regularPrice,
+    DiscountPrice,
+    isIntheCart,
+
+}) {
 
     return (
 
         <article className={classes.Product} itemScope itemType="http://schema.org/Product">
             <figure className={classes.product__imageWrapper}>
-                <img className={classes.Product__image} src="../assets/images/img01.png" alt="Product" itemProp="image"/>
+                <img className={classes.Product__image} src="assets/images/img01.png" alt="Product" itemProp="image"/>
                 <button className="product__wishlist-button button button--round button--wishlist">
                     <WishListIcon className={classes.Icon} />
                     {/* <svg class="icon" width="20px" height="20px" viewBox="0 6 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
