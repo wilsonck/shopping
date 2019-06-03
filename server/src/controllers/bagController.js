@@ -1,32 +1,31 @@
 const fs = require('fs');
 const orderBy = require('lodash/orderBy');
 
-const getbag = () => {
-    return JSON.parse(fs.readFileSync(__dirname + '/data/products.json').toString());
-}
-
 exports.get = (req, res, next) => {
-    let bag = getbag();
-
-    if(req.query.brandId) {
-        const brandId = req.query.brandId
-        productsFiltred = productsFiltred.filter( p => p.brandId == brandId);
+    let bag = [];
+    if (bag) {
+        bag = req.session.bag
     }
-
-    if(['asc','desc'].includes(req.query.orderPrice)) {
-        const orderPrice = req.query.orderPrice
-        productsFiltred = orderBy(productsFiltred, ['price'], [orderPrice.toLowerCase()])
-    }
-
-    res.status(200).send(productsFiltred);
+    res.status(200).send(bag);
 };
 
 exports.post = (req, res, next) => {
-    res.status(201).send('Requisição recebida com sucesso!');
+    const item = req.body;
+    if(req.session.bag) {
+        req.session.bag.push(item)
+    } else {
+        req.session.bag = [];
+        req.session.bag.push(item);
+    }
+    res.status(201).send(req.session.bag);
 };
 
 
 exports.delete = (req, res, next) => {
-    let id = req.params.id;
-    res.status(200).send(`Requisição recebida com sucesso! ${id}`);
+    const id = req.params.productId;
+    bag = [];
+    if(req.session.bag) {
+        bag = req.session.bag.filter(b => b.productId !== id);
+    }
+    res.status(201).send(bag);
 };

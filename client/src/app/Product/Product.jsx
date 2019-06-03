@@ -53,11 +53,12 @@ class Product extends Component{
                                     <CardProduct 
                                         productName={prod.subtitle}
                                         regularPrice={prod.price}
+                                        discountPrice={prod.priceDiscounted}
                                         brandName={prod.brand}
                                     />
                                 </li>
                             );
-                        })}
+                    })}
                    </ul>
                    <Pagination />
                 </Container>

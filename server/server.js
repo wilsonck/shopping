@@ -1,4 +1,5 @@
-const app = require('./src/app');
+const app = require('./app');
+const express = require('express');
 
 const port = normalizaPort(process.env.PORT || '5000');
 

@@ -2,6 +2,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 
 import { ReactComponent as WishListIcon } from '../../assets/svg/wishlist.svg';
+import Price from "../Price/Price";
 
 import classes from './CardProduct.module.scss';
 
@@ -9,16 +10,14 @@ function CardProduct({
     brandName,
     productName,
     regularPrice,
-    DiscountPrice,
+    discountPrice,
     isIntheCart,
-
 }) {
 
     return (
-
         <article className={classes.Product} itemScope itemType="http://schema.org/Product">
             <figure className={classes.product__imageWrapper}>
-                <img className={classes.Product__image} src="assets/images/img01.png" alt="Product" itemProp="image"/>
+                <img className={classes.Product__image} src="/images/img01.png" alt="Product" itemProp="image"/>
                 <button className="product__wishlist-button button button--round button--wishlist">
                     <WishListIcon className={classes.Icon} />
                     {/* <svg class="icon" width="20px" height="20px" viewBox="0 6 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -30,14 +29,13 @@ function CardProduct({
             <div className={classes.Product__details}>
                 <h1 className={classes.Product__title} itemProp="brand">{brandName}</h1>
                 <p className={classes.Product__subtitle} itemProp="description">{productName}</p>
-                <div className={classes.Product__price} itemScope itemType="http://schema.org/Offer">
-                    <span className={classes.Product__price__strike}>{regularPrice}</span>
-                    <span className={classes.Product__price__discounted} itemProp="price">£210</span>
-                </div>
+                <Price
+                    regularPrice={regularPrice}
+                    discountPrice={discountPrice}
+                />
                 <button className="product__add-to-cart button button--primary">Add to Cart</button>
             </div>
         </article>
-       
     );
 }
 
