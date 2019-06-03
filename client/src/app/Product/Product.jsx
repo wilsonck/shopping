@@ -67,9 +67,6 @@ class Product extends Component{
     }
 }
 
-
-
-
 const mapStateToProps = ({
     productsReducer: { products },
     brandsReducer: { brands }

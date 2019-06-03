@@ -19,6 +19,11 @@
         flex-direction: row;
         align-items: flex-end;
 
+        .Popover{
+            display:inline-block;
+            cursor: pointer;
+        }
+
         .HeaderBag{
             
             &__item {
