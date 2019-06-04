@@ -55,12 +55,15 @@ const productsReducer = (state = initialState, action) => {
             };
 
         case `${constBaseName}_REMOVE_PRODUCT_CART`:
-            const newElements = state[reducerType].filter(st => st.id !== action.payload.id);
-            const stateStations = { 
-                ...state, 
-                [reducerType]: newElements 
+            const deleteBag = {
+                products: action.payload,
+                total: calculateToTalCart(action.payload)
             };
-            return stateStations;
+            return { 
+                ...state, 
+                [reducerType]: deleteBag, 
+                "meta": action.payload.meta 
+            };
 
         default:
           return state;
