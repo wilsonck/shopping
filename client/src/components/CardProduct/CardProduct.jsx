@@ -12,6 +12,7 @@ import classes from './CardProduct.module.scss';
 function CardProduct({
     productId,
     brandName,
+    productImage,
     productName,
     regularPrice,
     discountPrice,
@@ -26,7 +27,7 @@ function CardProduct({
     return (
         <article className={classes.Product} itemScope itemType="http://schema.org/Product">
             <figure className={classes.Figure}>
-                <img className={classes.Product__image} src="/images/img01.png" alt="Product" itemProp="image"/>
+                <img className={classes.Product__image} src={`http://localhost:5000/${productImage}`} alt="Product" itemProp="image"/>
                     <Button
                         className={classes.WishlistButton}
                         disabled={isIntheCart}

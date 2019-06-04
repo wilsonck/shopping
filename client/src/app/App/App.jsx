@@ -8,7 +8,7 @@ import Footer from '../../components/Footer/Footer';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { fetchBag, addProductCart } from '../../store/bag/actions';
+import { fetchBag, addProductCart, removeProductToCart } from '../../store/bag/actions';
 import { fetchBrands } from '../../store/brands/actions';
 
 class App extends Component{
@@ -29,6 +29,18 @@ class App extends Component{
         }
     }
 
+     /**
+     * Handle the add Cart
+      * @param {idProduct}  IdProduct to add in the cart
+     */
+    removeToCart = async (idProduct) => {
+        try {
+            await this.props.removeProductToCart(idProduct);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     addToWishList = (idProduct) => {
         console.log("addWidhList --> ", idProduct);
     }
@@ -42,6 +54,7 @@ class App extends Component{
             <Fragment>
                 <Header 
                     bagData={bag}
+                    removeToCart={this.removeToCart}
                 />
                 <Container>
                     <Product 
@@ -69,6 +82,7 @@ const mapDispatchToProps = dispatch => {
     return bindActionCreators({
         fetchBag,
         addProductCart,
+        removeProductToCart,
         fetchBrands
     }, dispatch);
 }

@@ -81,3 +81,12 @@
     }
 
 }
+
+.MainPopover{
+    padding:1rem 0 0;
+
+    :global(.ant-popover-content .ant-popover-inner .ant-popover-inner-content){
+        padding:1rem 0 1.5rem 0;  
+    }
+
+}

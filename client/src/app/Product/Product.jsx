@@ -57,6 +57,7 @@ class Product extends Component{
                     className={classes.ProductList__item} >
                         <CardProduct
                             productId={prod.id}
+                            productImage={prod.image}
                             addToCart={addToCart}
                             addToWishList={addToWishList}
                             productName={prod.subtitle}

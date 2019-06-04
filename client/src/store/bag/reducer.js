@@ -1,5 +1,8 @@
 const initialState = {
-    bag: []
+    bag: {
+        products: [],
+        total: 0
+    }
 };
 
 const reducerType = "bag"
@@ -21,9 +24,13 @@ const productsReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case `${constBaseName}_FETCH_ALL`:
+        const productsBag = {
+            products: action.payload,
+            total: calculateToTalCart(action.payload)
+        };
         return { 
             ...state, 
-            [reducerType]: action.payload, 
+            [reducerType]: productsBag, 
             "meta": action.payload.meta 
         };
 

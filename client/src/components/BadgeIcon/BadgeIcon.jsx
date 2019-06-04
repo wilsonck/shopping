@@ -12,8 +12,8 @@ function Header({
     counter
 }) {
 
-    const renderPrice =  () => price ? (<div className={classes.HeaderBag__price}>{price}</div>) : null;
-    const renderCounter =  () => counter ? (<span className={classes.Bag__itemCounter}>{counter}</span>) : null;
+    const renderPrice =  () => price ? (<div className={classes.HeaderBag__price}>£ {price}</div>) :  null;
+    const renderCounter =  () => (<span className={classes.Bag__itemCounter}>{counter}</span>);
 
     return (
         <div className={getClassesToApply(classes.BadgeIcon__item, className)}>
@@ -26,9 +26,7 @@ function Header({
 
 Header.propTypes = {
     className: PropTypes.string,
-    renderIcon: PropTypes.func,
-    price: PropTypes.string,
-    counter: PropTypes.string,
+    renderIcon: PropTypes.func
 };
 
 Header.defaultProps = {

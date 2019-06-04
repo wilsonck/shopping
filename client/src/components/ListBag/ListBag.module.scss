@@ -1,83 +1,63 @@
 @import '../../sass/main.scss';
 
-.Header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+$size-button-remove: 2rem;
 
-    .PageTitle {
-        font-size: 2rem;
-    }
+.ListBag{
 
+    width:27rem;
 
-   /* ==========================================================================
-   Bag
-   ========================================================================== */
+    .Product{
+        border-bottom: 1px solid #d9d9d9;
+        padding:2rem 1.5rem;
+        display: block;
+        position: relative;
+        height:11rem;
 
-    .HeaderBag {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-end;
-
-        .Popover{
-            display:inline-block;
-            cursor: pointer;
+        .Image{
+            width:6rem;
+            float:left;
+            margin-right:1.3rem;
         }
 
-        .HeaderBag{
-            
-            &__item {
-                height: 2.5rem;
-
-                display: flex;
-                align-items: flex-end;
-
-                .Icon {
-                    height: auto;
-                    fill: $color-dark-gray;
-                }
-
-                .HeaderBag__price {
-                    margin-right: .5rem;
-                    font-size: 1.2rem;
-                    line-height: 1.2rem;
-                
-                }
-
-                .Bag__itemCounter {
-                    width: 1.3rem;
-                    height: 1.3rem;
-                    margin-left: -.1rem;
-            
-                    display: flex;
-                    align-self: flex-start;
-                    justify-content: center;
-                    align-items: center;
-            
-                    font-family: $font-bold, sans-serif;
-                    font-size: .8rem;
-                    text-align: center;
-            
-                    border-radius: 50%;
-                    color: #ffffff;
-                    background-color: #358ED7;
-                }
-            }
-
-            &__wishlistCount {
-                margin-left: 1rem;
-            }
-
-            &__count {
-                margin-left: 1rem;
-
-                .Icon {
-                    width: 1.7rem;
-                }
-            }
-
+        .Name{
+            font-size:1rem;
+            color: $color-black;
+            font-weight: bold;
         }
-    
+
+
+        .RemoveBagButton{
+            width: $size-button-remove;
+            height: $size-button-remove;
+            right: 15px;
+            top: 15px;
+            position: absolute;
+            line-height: .2px;
+            padding: 0;
+            text-align: -webkit-center;
+            font-size: 1rem;
+        }
+
+        &:nth-of-type(even) {
+            background: #f8f8f8;
+        }
+
     }
+
+    .Total{
+        text-transform: uppercase;
+        padding: 1.5rem 1rem;
+        margin-bottom:1rem;
+        width:23rem;
+        margin-left:2rem;
+        margin-top:1rem;
+
+        border-bottom:1px dotted #d9d9d9;
+
+        span{
+            float:right;
+        }
+    }
+
 
 }

@@ -14,7 +14,8 @@ import Popover from "../Popover/Popover";
 import classes from './Header.module.scss';
 
 function Header({
-    bagData
+    bagData,
+    removeToCart
 }) {
 
     const wishListContent = () => {
@@ -22,7 +23,10 @@ function Header({
     }
 
     const bagContent = () => {
-        return (<ListBag bagData={bagData} />);
+        return (<ListBag 
+                    bagData={bagData} 
+                    removeToCart={removeToCart} />
+                );
     }
 
     return (
@@ -30,14 +34,14 @@ function Header({
             <h1 className={classes.PageTitle}>PRODUCT LIST</h1>
             <aside className={classes.HeaderBag}>
 
-                <Popover placement={'bottom'} content={bagContent()}>
+                <Popover className={classes.MainPopover} placement={'bottom'} content={bagContent()}>
                     {/* Cart */}
                     <div className={classes.Popover}>
                         <BadgeIcon
                             className={classes.HeaderBag__count}
-                            counter="10"
+                            counter={bagData.products.length}
                             renderIcon={() => (<BagIcon className={getClassesToApply(classes.Icon, classes.BagIcon)} />)}
-                            price="£210"
+                            price={bagData.total}
                         />
                     </div>
                 </Popover>

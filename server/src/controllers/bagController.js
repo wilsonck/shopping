@@ -4,10 +4,11 @@ const get = require('lodash/get');
 
 exports.get = (req, res, next) => {
     let bag = [];
-    if (bag) {
+    if (req.session.bag) {
         bag = req.session.bag
     }
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    console.log("bag --> ", bag);
     res.status(200).send(bag);
 };
 
@@ -15,6 +16,7 @@ exports.post = (req, res, next) => {
     const product = Products.getById(req.body.productId);
     const item = {
         productId: get(product, "id"),
+        name: get(product, "subtitle"),
         quantity: 1,
         price: get(product, "price"),
         image: get(product, "image")

@@ -8,11 +8,12 @@ function Popover({
     children,
     content,
     placement,
-    trigger
+    trigger,
+    className
 }) {
 
     return (
-        <AntPopover placement={placement} title={title} content={content} trigger={trigger}>
+        <AntPopover overlayClassName={className} placement={placement} title={title} content={content} trigger={trigger}>
             {children}
         </AntPopover>
     );
