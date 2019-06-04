@@ -10,8 +10,7 @@ function Button({
     disabled
 }) {
     const appliedClasses = [
-        classes.Button,
-        classes[btnType]
+        classes.Button
     ];
 
     if(className) {
@@ -31,7 +30,6 @@ function Button({
 };
 
 Button.propTypes = {
-    btnType: PropTypes.string,
     className: PropTypes.string,
     children: PropTypes.node.isRequired,
     onClick: PropTypes.func.isRequired,

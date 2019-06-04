@@ -1,16 +1,31 @@
 @import '../../sass/main.scss';
 
+.Product{
+    
+    .NoResults{
+        width: 100%;
+        margin: 3rem 1rem 2rem 1rem;
+        background: $color-white;
+        padding: 4rem 0;
+        text-align: center;
+        font-size: 3rem;
 
-.ProductList {
-    display: flex;
-    flex: 0 1 auto;
-    flex-flow: row wrap;
-    margin: 0 -10px;
+        max-width: 124rem;
 
-    &__item {
-        padding: 10px;
-        flex: 1 0 33.3333%;
-        max-width: 33.3333%;
+    }
+
+    .ProductList {
+        display: flex;
+        flex: 0 1 auto;
+        flex-flow: row wrap;
+        margin: 0 -10px;
+    
+        &__item {
+            padding: 10px;
+            flex: 1 0 33.3333%;
+            max-width: 33.3333%;
+        }
+    
     }
 
 }

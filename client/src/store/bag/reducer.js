@@ -4,6 +4,17 @@ const initialState = {
 
 const reducerType = "bag"
 
+ /**
+ * Cacl total of cart.
+ * @param {array} task
+ */
+const calculateToTalCart = (products = []) => {
+    let totalCart = 0;
+    products.forEach(prod => totalCart = Number(prod.quantity) * Number(prod.price));
+    return totalCart;
+};
+
+
 const productsReducer = (state = initialState, action) => {
 
     const constBaseName = reducerType.toUpperCase();
@@ -16,12 +27,15 @@ const productsReducer = (state = initialState, action) => {
             "meta": action.payload.meta 
         };
 
-        case `${constBaseName}_SAVE`:
-            const newItem = action.payload;
-            newItem.isNew = true;
+        case `${constBaseName}_ADD_PRODUCT_CART`:
+            const productsCart = action.payload;
+            const newItem = {
+                products: productsCart,
+                total: calculateToTalCart(productsCart)
+            };
             const newState = { 
                 ...state, 
-                [reducerType]: [newItem, ...state[reducerType]] 
+                [reducerType]: newItem 
             };
             return newState;
 
@@ -33,7 +47,7 @@ const productsReducer = (state = initialState, action) => {
                 [reducerType]: newStationTypes 
             };
 
-        case `${constBaseName}_REMOVE`:
+        case `${constBaseName}_REMOVE_PRODUCT_CART`:
             const newElements = state[reducerType].filter(st => st.id !== action.payload.id);
             const stateStations = { 
                 ...state, 

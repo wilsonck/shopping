@@ -1,6 +1,7 @@
 @import '../../sass/main.scss';
 
 .Product{
+    position:relative;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -8,7 +9,7 @@
     background-color: $color-white;
 
     &__imageWrapper {
-        padding: 20px;
+        padding: 2rem;
         position: relative;
         text-align: center;
 
@@ -19,55 +20,92 @@
 
     }
 
+    .Figure{
+        margin: 3rem 0;
+        text-align: center;
+    }
 
     &__details {
         display: flex;
         flex: 1 0 auto;
         flex-direction: column;
-        padding: 10px 20px 20px;
+        padding: 1rem 2rem 2rem;
         text-align: center;
 
         .Product{
             
             &__title {
-                padding-bottom: 10px; 
+                padding-bottom: 1rem; 
                 
                 font-family: 'Lato-Bold', sans-serif;
-                font-size: 14px;
+                font-size: 1.4rem;
                 letter-spacing: 1.37px;
                 text-transform: uppercase;
             }
         
             &__subtitle {
-                padding-bottom: 10px; 
+                padding-bottom: 1rem; 
             
-                font-size: 12px;
-                line-height: 19px;
-                letter-spacing: 0.43px;
+                font-size: 1.2rem;
+                line-height: 1.9rem;
+                letter-spacing: .043px;
             
-                color: #808080;
+                color: $color-dark;
             }
 
             &__price {
-                padding-bottom: 20px;
+                padding-bottom: 2rem;
                 
                 font-family: 'Lato-Bold', sans-serif;
-                font-size: 14px;
-                letter-spacing: 2.33px;
+                font-size: 1.4rem;
+                letter-spacing: .2.33px;
 
                 .Product__price__strike {
-                    margin-right: 10px;
+                    margin-right: 1rem;
                     text-decoration: line-through;
                 }
                 
                 .Product__price__discounted {
-                    color: #F54B5E;
+                    color: $red;
                 }
 
             }
 
         }
 
+        .ButtonInCart {
+            pointer-events: none;
+            background-color: #d9d9d9;
+        }
+
+    }
+
+    .WishlistButton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        position: absolute;
+        top: 10px;
+        right: 10px;
+
+        padding:.8rem;
+
+        &:hover{
+            background: $color-white;
+            svg > polygon{
+                fill:#444A59;
+            }
+        }
+
+        .Icon{
+            width:2rem;
+            height:2rem;
+
+            polygon{
+                fill: #D9D9E6;
+            }
+        }
     }
     
     

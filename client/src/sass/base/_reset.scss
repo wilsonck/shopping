@@ -65,6 +65,10 @@ ul, li {
 button {
     appearance: none;
     border: 0;
+
+    &:focus {
+        outline: none;
+    }
 }
 
 header,

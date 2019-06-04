@@ -45,11 +45,10 @@ class abstractService {
      * Saves a given element.
      * @param {*} element - The element to be saved.
      */
-    async save(element, otherParams) {
-        this._beforeRequest(null, otherParams);
+    async save(element) {
         // const url = this.parameterizedEndpoint('', { ...otherParams, method: "save" }) || this.endPoint;
         let response = await axios.post(this.endPoint, element);
-        return response.data.data;
+        return response.data;
     }
 
     /**

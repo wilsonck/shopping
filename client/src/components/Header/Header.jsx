@@ -2,6 +2,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 
 import BadgeIcon from "../BadgeIcon/BadgeIcon";
+import ListBag from "../ListBag/ListBag";
 
 import { ReactComponent as BagIcon } from '../../assets/svg/bag.svg';
 import { ReactComponent as WishListIcon } from '../../assets/svg/wishlist.svg';
@@ -12,14 +13,16 @@ import Popover from "../Popover/Popover";
 
 import classes from './Header.module.scss';
 
-function Header() {
+function Header({
+    bagData
+}) {
 
     const wishListContent = () => {
         return (<h1> WishList </h1>);
     }
 
     const bagContent = () => {
-        return (<h1> Cart </h1>);
+        return (<ListBag bagData={bagData} />);
     }
 
     return (

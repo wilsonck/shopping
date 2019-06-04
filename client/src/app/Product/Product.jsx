@@ -22,48 +22,72 @@ class Product extends Component{
         this.props.fetchBrands();
     }
 
+    /**
+     * Call the Fetch the products sort by Price
+     */
     sortProductsByPrice = (sortType) =>  {
         this.props.fetchProducts( { orderPrice: sortType });
     } 
 
+    /**
+     * Call the Fetch the products sort by Brand
+     */
     sortProductsByBrand = (brandId) => {
         this.props.fetchProducts( { brandId });
+    }
+
+    /**
+     * Return all products render and check if the search return any products, we show a warning 
+     */
+    renderProducts = (products) => {
+
+        const { 
+            addToCart, 
+            addToWishList
+        } = this.props;
+
+        if (products.length === 0 ){
+            return (<div className={classes.NoResults} > No results to Show. </div>); 
+        }
+
+        return products.map((prod, index) => {
+            return (
+                <li 
+                    key={`prod-${index}`} 
+                    className={classes.ProductList__item} >
+                        <CardProduct
+                            productId={prod.id}
+                            addToCart={addToCart}
+                            addToWishList={addToWishList}
+                            productName={prod.subtitle}
+                            regularPrice={prod.price}
+                            discountPrice={prod.priceDiscounted}
+                            brandName={prod.brand}
+                        />
+                </li>
+            );
+        })
     }
 
     render() {
 
         const { 
             products, 
-            brands 
+            brands
         } = this.props;
 
         return(
-            <Fragment>
-                <Header />
-                <Container>
-                    <Filter 
-                        optionsBrands={brands}
-                        sortProductsByPrice={this.sortProductsByPrice}
-                        sortProductsByBrand={this.sortProductsByBrand}
-                    />
-                    <ul className={classes.ProductList}>
-                        {products.map((prod, index) => {
-                            return (
-                                <li key={`prod-${index}`} className={classes.ProductList__item}>
-                                    <CardProduct 
-                                        productName={prod.subtitle}
-                                        regularPrice={prod.price}
-                                        discountPrice={prod.priceDiscounted}
-                                        brandName={prod.brand}
-                                    />
-                                </li>
-                            );
-                    })}
-                   </ul>
-                   <Pagination />
-                </Container>
-                <Footer />
-            </Fragment>
+            <div className={classes.Product}>
+                <Filter 
+                    optionsBrands={brands}
+                    sortProductsByPrice={this.sortProductsByPrice}
+                    sortProductsByBrand={this.sortProductsByBrand}
+                />
+                <ul className={classes.ProductList}>
+                    {this.renderProducts(products)}
+                </ul>
+                <Pagination />
+            </div>
         );
     }
 }
