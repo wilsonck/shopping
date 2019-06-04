@@ -1,6 +1,15 @@
 import axios from 'axios';
 import cloneDeep from 'lodash/cloneDeep';
 
+axios.defaults.withCredentials = true;
+const requestService = axios.create({
+    // withCredentials: true,
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+});
+
 /**
  * Abstract class that is meant to be overwritten by any service that wants to implement basic CRUD operations.
  */
@@ -37,8 +46,8 @@ class abstractService {
         where.page_size = where.page_size || -1;
         where = this.createQueryStringFromObj(where);
         const url =  `${this.endPoint}?${where}`;
-        const response = await axios.get(url);
-        return response.data.data;
+        const response = await requestService.get(url);
+        return response.data;
     }
 
     /**
@@ -47,7 +56,7 @@ class abstractService {
      */
     async save(element) {
         // const url = this.parameterizedEndpoint('', { ...otherParams, method: "save" }) || this.endPoint;
-        let response = await axios.post(this.endPoint, element);
+        let response = await requestService.post(this.endPoint, element);
         return response.data.data;
     }
 

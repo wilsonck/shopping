@@ -1,10 +1,8 @@
-import React, { Component, Fragment } from 'react';
-import Header from '../../components/Header/Header';
-import Container from '../../components/Container/Container';
+import React, { Component } from 'react';
 import Filter from '../../components/Filter/Filter';
 import CardProduct from '../../components/CardProduct/CardProduct';
 import Pagination from '../../components/Pagination/Pagination';
-import Footer from '../../components/Footer/Footer';
+import ConfigPagination from "../../config/pagination";
 
 //REDUX
 import { connect } from 'react-redux';
@@ -17,9 +15,22 @@ import classes from "./Product.module.scss";
 
 class Product extends Component{
 
+    state = {
+        currentPage: 1
+    }
+
     async componentDidMount() {
-        this.props.fetchProducts();
+        this.getProducts(this.state.currentPage);
         this.props.fetchBrands();
+    }
+
+    getProducts = (currentPage) => {
+        const pagination = {
+            "page": currentPage, 
+            "page_size": ConfigPagination.ItensPerPage
+        }
+        console.log(currentPage);
+        this.props.fetchProducts( pagination );
     }
 
     /**
@@ -34,6 +45,17 @@ class Product extends Component{
      */
     sortProductsByBrand = (brandId) => {
         this.props.fetchProducts( { brandId });
+    }
+
+    /**
+     * Handle the change page in pagination 
+     */
+    changePage = (pageId) => {
+        this.setState({
+            currentPage: pageId
+        });
+        this.getProducts(pageId);
+        console.log("fetch page: ", pageId);
     }
 
     /**
@@ -74,8 +96,10 @@ class Product extends Component{
 
         const { 
             products, 
-            brands
+            brands,
+            meta
         } = this.props;
+
 
         return(
             <div className={classes.Product}>
@@ -87,18 +111,22 @@ class Product extends Component{
                 <ul className={classes.ProductList}>
                     {this.renderProducts(products)}
                 </ul>
-                <Pagination />
+                <Pagination 
+                    itensPerPage={ConfigPagination.ItensPerPage}
+                    totalItens={meta}
+                    changePage={this.changePage}/>
             </div>
         );
     }
 }
 
 const mapStateToProps = ({
-    productsReducer: { products },
+    productsReducer: { products, meta },
     brandsReducer: { brands }
 }) => {
     return {
         products,
+        meta,
         brands
     };
 }

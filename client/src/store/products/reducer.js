@@ -12,8 +12,8 @@ const productsReducer = (state = initialState, action) => {
         case `${constBaseName}_FETCH_ALL`:
         return { 
             ...state, 
-            [reducerType]: action.payload, 
-            "meta": action.payload.meta 
+            [reducerType]: action.payload.data, 
+            "meta": action.payload.meta.total
         };
 
         case `${constBaseName}_SAVE`:

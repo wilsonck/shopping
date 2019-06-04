@@ -12,7 +12,7 @@ const brandsReducer = (state = initialState, action) => {
         case `${constBaseName}_FETCH_ALL`:
         return { 
             ...state, 
-            [reducerType]: action.payload, 
+            [reducerType]: action.payload.data, 
             "meta": action.payload.meta 
         };
 

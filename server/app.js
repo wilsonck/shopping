@@ -1,15 +1,26 @@
-var cors = require('cors');
 const express = require('express');
 const session = require('express-session');
+const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const path = require('path');
 
 const app = express();
 
+app.use(cookieParser())
 app.use(session({
-  secret: '#$ShoppingCart%&',
-  resave: false
+  secret: 'ShoppingCart',
+  resave: true,
+  cookie: { 
+    secure: false 
+  },
+  saveUninitialized: false, 
 }));
+
+app.use(cors({
+  origin: ["http://localhost:3000"],
+  credentials: true
+ }));
 
 //Rotas
 const index = require('./src/routes/index');

@@ -25,8 +25,8 @@ const productsReducer = (state = initialState, action) => {
     switch (action.type) {
         case `${constBaseName}_FETCH_ALL`:
         const productsBag = {
-            products: action.payload,
-            total: calculateToTalCart(action.payload)
+            products: action.payload.data,
+            total: calculateToTalCart(action.payload.data)
         };
         return { 
             ...state, 
@@ -35,7 +35,7 @@ const productsReducer = (state = initialState, action) => {
         };
 
         case `${constBaseName}_ADD_PRODUCT_CART`:
-            const productsCart = action.payload;
+            const productsCart = action.payload.data;
             const newItem = {
                 products: productsCart,
                 total: calculateToTalCart(productsCart)

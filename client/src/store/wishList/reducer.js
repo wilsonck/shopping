@@ -20,7 +20,7 @@ const productsReducer = (state = initialState, action) => {
         case `${constBaseName}_ADD_PRODUCT_WISHLIST`:
             const newState = { 
                 ...state, 
-                [reducerType]: action.payload 
+                [reducerType]: [...state, action.payload]
             };
             return newState;
 

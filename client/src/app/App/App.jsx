@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import Header from '../../components/Header/Header';
 import Container from '../../components/Container/Container';
-import Product from '../Product/Product';import CardProduct from '../../components/CardProduct/CardProduct';import Pagination from '../../components/Pagination/Pagination';
+import Product from '../Product/Product';
 import Footer from '../../components/Footer/Footer';
 
 //REDUX

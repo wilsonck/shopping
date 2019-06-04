@@ -53,7 +53,7 @@ exports.get = (req, res, next) => {
         productsFiltred = orderBy(productsFiltred, ['price'], [orderPrice.toLowerCase()])
     }
 
-    const pageSize = get(req.query, "pageSize", null);
+    const pageSize = get(req.query, "page_size", null);
     //Check if necessary to do pagination
     if(pageSize && pageSize !== noPagination && productsFiltred.length > pageSize) {
         productsFiltred = Pagination(productsFiltred, Number(get(req.query, "page")), pageSize)
