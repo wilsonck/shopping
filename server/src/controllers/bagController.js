@@ -8,7 +8,6 @@ exports.get = (req, res, next) => {
         bag = req.session.bag
     }
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-    console.log("bag --> ", bag);
     res.status(200).send(bag);
 };
 
