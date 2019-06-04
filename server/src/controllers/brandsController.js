@@ -1,5 +1,8 @@
-const fs = require('fs');
+const get = require('lodash/get');
 const Brands = require('../models/Brands');
+
+//Import Pagination
+const { Pagination, noPagination } = require('../helpers/pagination');
 
 const createObjectReturn = (brands, totalBrands) =>  {
     return {
@@ -12,6 +15,12 @@ const createObjectReturn = (brands, totalBrands) =>  {
 
 exports.get = (req, res, next) => {
     let allBrands =  Brands.getAll();
+
+    const pageSize = get(req.query, "pageSize", null);
+    //Check if necessary to do pagination
+    if(pageSize && pageSize !== noPagination && allBrands.length > pageSize) {
+        allBrands = Pagination(allBrands, Number(get(req.query, "page")), pageSize)
+    }
 
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.status(200).send(createObjectReturn(allBrands, allBrands.length));

@@ -1,16 +1,14 @@
-'use strict';
+// 'use strict';
 //Lodash
 const orderBy = require('lodash/orderBy');
 const get = require('lodash/get');
+
 //Models
 const Products = require('../models/Products');
 const Brands = require('../models/Brands');
 
-//Const Pagination
-const defaultPageSize = 6;
-const page = 1;
-const noPagination = -1;
-
+//Import Pagination
+const { Pagination, noPagination } = require('../helpers/pagination');
 
 /**
  * Method get all products and add Brand to request
@@ -56,13 +54,9 @@ exports.get = (req, res, next) => {
     }
 
     const pageSize = get(req.query, "pageSize", null);
-
     //Check if necessary to do pagination
     if(pageSize && pageSize !== noPagination && productsFiltred.length > pageSize) {
-        const actualPage = Number(req.query.page || page);
-        const startData = (actualPage -1) * pageSize;
-        const finalData = actualPage * pageSize;
-        productsFiltred = productsFiltred.slice(startData, finalData);
+        productsFiltred = Pagination(productsFiltred, Number(get(req.query, "page")), pageSize)
     }
 
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
