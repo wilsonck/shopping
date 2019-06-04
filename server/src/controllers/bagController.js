@@ -7,8 +7,13 @@ exports.get = (req, res, next) => {
     if (req.session.bag) {
         bag = req.session.bag
     }
+
+    const objectReturn = {
+        data: bag
+    }
+
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.status(200).send(bag);
+    res.status(200).send(objectReturn);
 };
 
 exports.post = (req, res, next) => {
@@ -26,8 +31,13 @@ exports.post = (req, res, next) => {
         req.session.bag = [];
         req.session.bag.push(item);
     }
+
+    const objectReturn = {
+        data: req.session.bag
+    }
+
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.status(201).send(req.session.bag);
+    res.status(201).send(objectReturn);
 };
 
 

@@ -28,6 +28,8 @@ const getProducts = () => {
  */
 exports.get = (req, res, next) => {
     let productsFiltred = getProducts();
+    
+    const totalProducts = productsFiltred.length;
 
     if(req.query.brandId) {
         const brandId = req.query.brandId
@@ -48,9 +50,14 @@ exports.get = (req, res, next) => {
         const finalData = actualPage * pageSize;
         productsFiltred = productsFiltred.slice(startData, finalData);
     }
-    
+    const objectReturn = {
+        data: productsFiltred,
+        meta: {
+            total: totalProducts
+        }
+    }
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.status(200).send(productsFiltred);
+    res.status(200).send(objectReturn);
 };
 
 /**
