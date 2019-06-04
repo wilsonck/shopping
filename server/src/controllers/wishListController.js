@@ -1,19 +1,56 @@
-exports.get = (req, res, next) => {
-    req.session.page_views = 1;
+const Products = require('../models/Products');
+const get = require('lodash/get');
 
-    res.status(200).send({
-        page_views: req.session.page_views
-    });
+const createObjectReturn = (wishList) =>  {
+    return {
+        data: wishList
+    }
+}
+
+exports.get = (req, res, next) => {
+    
+    let wishList = [];
+    
+    if (req.session.wishList) {
+        wishList = req.session.wishList;
+    }
+
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.status(200).send(createObjectReturn(wishList));
 };
 
 exports.post = (req, res, next) => {
-    console.log(res.req.body);
-    // req.session.wishlist
-    res.status(201).send('Requisição recebida com sucesso!');
+    const product = Products.getById(req.body.productId);
+    
+    const item = {
+        productId: get(product, "id"),
+        name: get(product, "subtitle"),
+        price: get(product, "price"),
+        image: get(product, "image")
+    }
+    
+    if(req.session.wishList) {
+        req.session.wishList.push(item)
+    } else {
+        req.session.wishList = [];
+        req.session.wishList.push(item);
+    }
+
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.status(201).send(createObjectReturn(req.session.wishList));
 };
 
 
 exports.delete = (req, res, next) => {
-    let id = req.params.id;
-    res.status(200).send(`Requisição recebida com sucesso! ${id}`);
+    
+    const id = req.params.productId;
+    
+    let wishList = [];
+
+    if(req.session.wishList) {
+        wishList = req.session.wishList.filter(b => b.productId !== id);
+    }
+    
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.status(201).send(createObjectReturn(wishList));
 };

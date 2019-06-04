@@ -15,11 +15,16 @@ import classes from './Header.module.scss';
 
 function Header({
     bagData,
-    removeToCart
+    wishListData,
+    removeToCart,
+    removeToWishList
 }) {
 
     const wishListContent = () => {
-        return (<h1> WishList </h1>);
+        return (<ListBag 
+            bagData={wishListData} 
+            removeToCart={removeToWishList} />
+        );
     }
 
     const bagContent = () => {

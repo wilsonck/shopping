@@ -8,13 +8,19 @@ import Footer from '../../components/Footer/Footer';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import { fetchWishList, addProductWishList, removeProductToWishList } from '../../store/wishList/actions';
 import { fetchBag, addProductCart, removeProductToCart } from '../../store/bag/actions';
-import { fetchBrands } from '../../store/brands/actions';
 
 class App extends Component{
 
     async componentDidMount() {
-        this.props.fetchBag();
+        const {
+            fetchBag,
+            fetchWishList
+        } = this.props;
+
+        fetchBag();
+        fetchWishList();
     }
 
     /**
@@ -29,7 +35,7 @@ class App extends Component{
         }
     }
 
-     /**
+    /**
      * Handle the add Cart
       * @param {idProduct}  IdProduct to add in the cart
      */
@@ -41,20 +47,38 @@ class App extends Component{
         }
     }
 
+    /**
+     * Handle the add Cart
+      * @param {idProduct}  IdProduct to add in the cart
+     */
+    removeToWishList = async (idProduct) => {
+        try {
+            await this.props.removeProductToWishList(idProduct);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     addToWishList = (idProduct) => {
-        console.log("addWidhList --> ", idProduct);
+        try {
+            await this.props.addProductWishList(idProduct);
+        } catch (error) {
+            console.error(error);
+        }
     }
     
 
     render() {
 
-        const { bag } = this.props;
+        const { bag, wishList } = this.props;
 
         return (
             <Fragment>
                 <Header 
                     bagData={bag}
+                    wishListData={wishList}
                     removeToCart={this.removeToCart}
+                    removeToWishList={this.removeToWishList}
                 />
                 <Container>
                     <Product 
@@ -70,11 +94,11 @@ class App extends Component{
 
 const mapStateToProps = ({
     bagReducer: { bag },
-    brandsReducer: { brands }
+    wishListReducer: { wishList }
 }) => {
     return {
         bag,
-        brands
+        wishList
     };
 }
 
@@ -83,7 +107,9 @@ const mapDispatchToProps = dispatch => {
         fetchBag,
         addProductCart,
         removeProductToCart,
-        fetchBrands
+        fetchWishList,
+        addProductWishList,
+        removeProductToWishList
     }, dispatch);
 }
 

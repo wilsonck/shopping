@@ -15,8 +15,8 @@ const createObjectReturn = (brands, totalBrands) =>  {
 
 exports.get = (req, res, next) => {
     let allBrands =  Brands.getAll();
-
     const pageSize = get(req.query, "pageSize", null);
+    
     //Check if necessary to do pagination
     if(pageSize && pageSize !== noPagination && allBrands.length > pageSize) {
         allBrands = Pagination(allBrands, Number(get(req.query, "page")), pageSize)

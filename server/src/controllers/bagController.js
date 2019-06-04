@@ -12,7 +12,7 @@ exports.get = (req, res, next) => {
     let bag = [];
     
     if (req.session.bag) {
-        bag = req.session.bag
+        bag = req.session.bag;
     }
 
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');

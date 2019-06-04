@@ -13,7 +13,6 @@ app.use(session({
 
 //Rotas
 const index = require('./src/routes/index');
-const personRoute = require('./src/routes/personRoute');
 const productsRoute = require('./src/routes/productsRoute');
 const brandsRoute = require('./src/routes/brandsRoute');
 const bagRoute = require('./src/routes/bagRoute');
@@ -26,7 +25,6 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use('/', index);
-app.use('/person', personRoute);
 app.use('/products', productsRoute);
 app.use('/brands', brandsRoute);
 app.use('/bag', bagRoute);
