@@ -1,23 +1,27 @@
 const Products = require('../models/Products');
 const get = require('lodash/get');
 
+const createObjectReturn = (bag) =>  {
+    return {
+        data: bag
+    }
+}
 
 exports.get = (req, res, next) => {
+    
     let bag = [];
+    
     if (req.session.bag) {
         bag = req.session.bag
     }
 
-    const objectReturn = {
-        data: bag
-    }
-
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.status(200).send(objectReturn);
+    res.status(200).send(createObjectReturn(bag));
 };
 
 exports.post = (req, res, next) => {
     const product = Products.getById(req.body.productId);
+    
     const item = {
         productId: get(product, "id"),
         name: get(product, "subtitle"),
@@ -25,6 +29,7 @@ exports.post = (req, res, next) => {
         price: get(product, "price"),
         image: get(product, "image")
     }
+    
     if(req.session.bag) {
         req.session.bag.push(item)
     } else {
@@ -32,21 +37,21 @@ exports.post = (req, res, next) => {
         req.session.bag.push(item);
     }
 
-    const objectReturn = {
-        data: req.session.bag
-    }
-
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.status(201).send(objectReturn);
+    res.status(201).send(createObjectReturn(req.session.bag));
 };
 
 
 exports.delete = (req, res, next) => {
+    
     const id = req.params.productId;
-    bag = [];
+    
+    let bag = [];
+
     if(req.session.bag) {
         bag = req.session.bag.filter(b => b.productId !== id);
     }
+    
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.status(201).send(bag);
+    res.status(201).send(createObjectReturn(bag));
 };

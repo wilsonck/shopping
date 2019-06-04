@@ -24,6 +24,20 @@ const getProducts = () => {
 }
 
 /**
+ * 
+ * @param {*} products 
+ * @param {*} totalProducts 
+ */
+const createObjectReturn = (products, totalProducts) =>  {
+    return {
+        data: products,
+        meta: {
+            total: totalProducts
+        }
+    }
+}
+
+/**
  * Get products
  */
 exports.get = (req, res, next) => {
@@ -41,7 +55,7 @@ exports.get = (req, res, next) => {
         productsFiltred = orderBy(productsFiltred, ['price'], [orderPrice.toLowerCase()])
     }
 
-    const pageSize = get(req.query, "pageSize", defaultPageSize);
+    const pageSize = get(req.query, "pageSize", null);
 
     //Check if necessary to do pagination
     if(pageSize && pageSize !== noPagination && productsFiltred.length > pageSize) {
@@ -50,14 +64,9 @@ exports.get = (req, res, next) => {
         const finalData = actualPage * pageSize;
         productsFiltred = productsFiltred.slice(startData, finalData);
     }
-    const objectReturn = {
-        data: productsFiltred,
-        meta: {
-            total: totalProducts
-        }
-    }
+
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.status(200).send(objectReturn);
+    res.status(200).send(createObjectReturn(productsFiltred, totalProducts));
 };
 
 /**

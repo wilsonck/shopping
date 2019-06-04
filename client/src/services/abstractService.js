@@ -38,7 +38,7 @@ class abstractService {
         where = this.createQueryStringFromObj(where);
         const url =  `${this.endPoint}?${where}`;
         const response = await axios.get(url);
-        return response.data;
+        return response.data.data;
     }
 
     /**
@@ -48,7 +48,7 @@ class abstractService {
     async save(element) {
         // const url = this.parameterizedEndpoint('', { ...otherParams, method: "save" }) || this.endPoint;
         let response = await axios.post(this.endPoint, element);
-        return response.data;
+        return response.data.data;
     }
 
     /**
@@ -59,7 +59,7 @@ class abstractService {
     async update(elementId, updatedAttributes) {
         const url =  `${this.endPoint}/${elementId}`;
         let response = await axios.patch(url, updatedAttributes);
-        return response.data.data;
+        return response.data.data.data;
     }
 
     /**
@@ -69,7 +69,7 @@ class abstractService {
     async remove(elementId) {
         const url =  `${this.endPoint}/${elementId}`;
         const response = await axios.delete(url);
-        return response.data;
+        return response.data.data;
     }
 }
 
