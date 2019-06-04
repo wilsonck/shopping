@@ -59,7 +59,7 @@ class App extends Component{
         }
     }
 
-    addToWishList = (idProduct) => {
+    addToWishList = async (idProduct) => {
         try {
             await this.props.addProductWishList(idProduct);
         } catch (error) {

@@ -56,7 +56,7 @@ function Header({
                     <div className={classes.Popover}>
                         <BadgeIcon
                             className={classes.HeaderBag__wishlistCount}
-                            counter="5"
+                            counter={wishListData.length}
                             renderIcon={() => (<WishListIcon className={getClassesToApply(classes.Icon, classes.WishListIcon)} />)}
                         />
                     </div>

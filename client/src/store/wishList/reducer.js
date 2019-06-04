@@ -1,21 +1,8 @@
 const initialState = {
-    bag: {
-        products: [],
-        total: 0
-    }
+    wishList: []
 };
 
-const reducerType = "bag"
-
- /**
- * Cacl total of cart.
- * @param {array} task
- */
-const calculateToTalCart = (products = []) => {
-    let totalCart = 0;
-    products.forEach(prod => totalCart = Number(prod.quantity) * Number(prod.price));
-    return totalCart;
-};
+const reducerType = "wishList"
 
 
 const productsReducer = (state = initialState, action) => {
@@ -24,25 +11,16 @@ const productsReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case `${constBaseName}_FETCH_ALL`:
-        const productsBag = {
-            products: action.payload,
-            total: calculateToTalCart(action.payload)
-        };
         return { 
             ...state, 
-            [reducerType]: productsBag, 
+            [reducerType]: action.payload, 
             "meta": action.payload.meta 
         };
 
-        case `${constBaseName}_ADD_PRODUCT_CART`:
-            const productsCart = action.payload;
-            const newItem = {
-                products: productsCart,
-                total: calculateToTalCart(productsCart)
-            };
+        case `${constBaseName}_ADD_PRODUCT_WISHLIST`:
             const newState = { 
                 ...state, 
-                [reducerType]: newItem 
+                [reducerType]: action.payload 
             };
             return newState;
 
@@ -56,8 +34,7 @@ const productsReducer = (state = initialState, action) => {
 
         case `${constBaseName}_REMOVE_PRODUCT_CART`:
             const deleteBag = {
-                products: action.payload,
-                total: calculateToTalCart(action.payload)
+                [reducerType]: action.payload,
             };
             return { 
                 ...state, 
