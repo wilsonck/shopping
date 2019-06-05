@@ -26,11 +26,13 @@ function Header({
 
 Header.propTypes = {
     className: PropTypes.string,
-    renderIcon: PropTypes.func
+    renderIcon: PropTypes.func,
+    price: PropTypes.number,
+    counter: PropTypes.number
 };
 
 Header.defaultProps = {
-
+    counter: 0
 };
 
 export default Header;

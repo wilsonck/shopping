@@ -30,7 +30,7 @@ function CardProduct({
     return (
         <article className={classes.Product} itemScope itemType="http://schema.org/Product">
             <figure className={classes.Figure}>
-                <img className={classes.Product__image} src={`http://localhost:5000/${productImage}`} alt="Product" itemProp="image"/>
+                <img className={classes.Product__image} src={`images/img01.png`} alt="Product" itemProp="image"/>
                     <Button
                         className={classBtninWishList}
                         disabled={isInWishList}
@@ -57,8 +57,16 @@ function CardProduct({
 }
 
 CardProduct.propTypes = {
+    productId: PropTypes.number,
+    brandName: PropTypes.string,
+    productImage: PropTypes.string,
+    productName: PropTypes.string,
+    regularPrice: PropTypes.number,
+    discountPrice: PropTypes.number,
     isIntheCart: PropTypes.bool,
-    isInWishList: PropTypes.bool
+    isInWishList: PropTypes.bool,
+    addToCart: PropTypes.func,
+    addToWishList: PropTypes.func
 };
 
 CardProduct.defaultProps = {

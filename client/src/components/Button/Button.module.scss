@@ -9,7 +9,7 @@
     cursor: pointer;
     transition: .3s border, .3s color, .3s background-color;
 
-    font-family: 'Lato-Bold', sans-serif;
+    font-family: $font-bold, $second-font;
     font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 1.39px;

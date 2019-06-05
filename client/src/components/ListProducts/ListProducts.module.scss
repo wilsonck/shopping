@@ -38,8 +38,8 @@ $size-button-remove: 2rem;
         .RemoveBagButton{
             width: $size-button-remove;
             height: $size-button-remove;
-            right: 15px;
-            top: 15px;
+            right: 1.5rem;
+            top: 1.5rem;
             position: absolute;
             line-height: .2px;
             padding: 0;
@@ -48,7 +48,7 @@ $size-button-remove: 2rem;
         }
 
         &:nth-of-type(even) {
-            background: #f8f8f8;
+            background: $color-ligh-gray;
         }
 
     }
@@ -63,7 +63,7 @@ $size-button-remove: 2rem;
     margin-left:2rem;
     margin-top:1rem;
 
-    border-bottom:1px dotted #d9d9d9;
+    border-bottom:1px dotted $color-gray;
 
     span{
         float:right;

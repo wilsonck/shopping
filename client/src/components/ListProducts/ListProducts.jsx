@@ -43,11 +43,17 @@ function ListProducts({
 }
 
 ListProducts.propTypes = {
-    messageToEmptyList: PropTypes.string
+    dataList: PropTypes.array,
+    removeToList: PropTypes.func,
+    showValues: PropTypes.bool,
+    total: PropTypes.number,
+    messageToEmptyList: PropTypes.string,
 };
 
 ListProducts.defaultProps = {
+    dataList: [],
     showValues: true,
+    total: 0,
     messageToEmptyList: "No products to show."
 };
 

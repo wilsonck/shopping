@@ -1,32 +1,48 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import { shallow, configure } from 'enzyme';
+import Button from './Button';
+import classes from 'Button.module.scss';
 
-import Header from './Header';
-import classes from './Header.module.scss';
-import Navigation from '../Navigation/Navigation';
+configure({adapter: new Adapter()});
 
-describe('<Header />', () => {
+describe('<Button />', () => {
     let wrapper;
-
-    const props = {
-        title: "Vendor Management Tool",
-        renderContentsOnRight: () => (
-            <div>Hey</div>
-        )
-    };
-
+    const onClickFn = jest.fn();
     beforeEach(() => {
-        wrapper = shallow(<Header {...props} /> );
+        const props = {
+            children: "Content",
+            onClick: onClickFn
+        }
+        wrapper = shallow(<Button {...props} />);
     });
 
-    it('should render <Header /> component', () => {
-        expect(wrapper.exists(`header.${classes.Header}`)).toBe(true);
-        expect(wrapper.exists(`div.${classes.Title}`)).toBe(true);
-        expect(wrapper.find(Navigation)).toHaveLength(1);
+    it('should render a <Button />', () => {
+        const button = wrapper.find("button");
+        expect(button).toBeDefined();
+        expect(button.hasClass(classes.Button)).toBe(true);
     });
 
-    it('should render content on the right side if specified', () => {
-        expect(wrapper.contains(<div>Hey</div>)).toBe(true);
+    it('should add a custom css class from props.className', () => {
+        wrapper.setProps({
+            className: "my-class"
+        })
+        const button = wrapper.find("button");
+        expect(button.hasClass(classes.Button)).toBe(true);
+        expect(button.hasClass("my-class")).toBe(true);
     });
+
+
+    it('should trigger action received in props.onClick', () => {
+        wrapper.simulate('click');
+        expect(onClickFn).toHaveBeenCalled();
+    });
+
+    it('should disabled the button disabled=true', () => {
+        wrapper.setProps({
+            disabled: true
+        })
+        const button = wrapper.find("button");
+    });
+
 });
-
