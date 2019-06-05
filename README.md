@@ -35,7 +35,8 @@ Foram desenvolvidas as seguintes api para controle da aplicação:
 * [DELETE] - /bag/{productId} - remove produto da Bag do usuário
 
 
-[server/READM.ME](Para instalar o subir a aplicação acesse o readme do server).
+[https://github.com/wilsonck/shopping/blob/master/client/README.md](Para instalar o subir a aplicação acesse o readme do server).
+
 
 # Client
 
@@ -52,5 +53,5 @@ O client foi desenvolvido em React e Redux.
 * Filtros - É possível fazer a busca de produtos por marca e ordenar os preços por Ascending e Descending. É possível mesclar as 2 buscas juntas.
 * Paginação: A paginação está considerando  a quantidade de 6 produtos por página.
 * Preço: Se o produto está com preço promocional o preço antigo é colocado com um um risco vermelho.
-* [client/READM.ME](Para instalar o subir a aplicação acesse o readme do client.)
 
+[https://github.com/wilsonck/shopping/blob/master/server/README.md](Para instalar o subir a aplicação acesse o readme do client.)
