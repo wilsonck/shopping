@@ -13,10 +13,14 @@ import { fetchBrands } from '../../store/brands/actions';
 
 import classes from "./Product.module.scss";
 
+const STRING_DEFAULT_OPTION = "DEFAULT_VALUE";
+
 class Product extends Component{
 
     state = {
-        currentPage: 1
+        currentPage: 1,
+        orderPrice: null,
+        brandId: null,
     }
 
     async componentDidMount() {
@@ -24,42 +28,59 @@ class Product extends Component{
         this.props.fetchBrands();
     }
 
-    getProducts = (currentPage) => {
-        const pagination = {
-            "page": currentPage, 
-            "page_size": ConfigPagination.ItensPerPage
+    /**
+     * Build the query to search page products, is possible combine more one filter, brand with price
+     */
+    buildWhere = () => {
+        let where = {};
+        if (this.state.orderPrice){
+            where.orderPrice = this.state.orderPrice;
         }
-        this.props.fetchProducts( pagination );
+        if (this.state.brandId){
+            where.brandId = this.state.brandId;
+        }
+        where.page = this.state.currentPage;
+        where.page_size = ConfigPagination.ItensPerPage;
+        return where;
+    }
+
+    /**
+     * Fetch the  request Products
+     */
+    getProducts = () => {
+        const _where = this.buildWhere();
+        this.props.fetchProducts( _where );
     }
 
     /**
      * Call the Fetch the products sort by Price
      */
     sortProductsByPrice = async (sortType) =>  {
+        const valueOrderPrice = sortType === STRING_DEFAULT_OPTION ? null : sortType;
         await this.setCurrentPage(1);
-        const where = {
-            "page": this.state.currentPage,
-            "page_size": ConfigPagination.ItensPerPage,
-            orderPrice: sortType
-        }
-        this.props.fetchProducts( where );
+        await this.setState({
+            orderPrice: valueOrderPrice
+        });
+        this.getProducts();
     } 
 
     /**
      * Call the Fetch the products sort by Brand
      */
     sortProductsByBrand =  async (brandId) => {
+        const valueBrandId = brandId === STRING_DEFAULT_OPTION ? null : brandId;
         await this.setCurrentPage(1);
-        const where = {
-            "page": this.state.currentPage, 
-            "page_size": ConfigPagination.ItensPerPage,
-            brandId
-        }
-        this.props.fetchProducts( where );
+        await this.setState({
+            brandId: valueBrandId
+        });
+        this.getProducts();
     }
 
-    setCurrentPage = (page) => {
-        this.setState({
+    /**
+     * Set the current page in the state
+     */
+    setCurrentPage = async (page) => {
+        await this.setState({
             currentPage: page
         });
     }
@@ -67,9 +88,9 @@ class Product extends Component{
     /**
      * Handle the change page in pagination 
      */
-    changePage = (pageId) => {
-        this.setCurrentPage(pageId);
-        this.getProducts(pageId);
+    changePage = async (pageId) => {
+        await this.setCurrentPage(pageId);
+        this.getProducts();
     }
 
     /**

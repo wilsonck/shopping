@@ -27,7 +27,7 @@ class Select extends Component {
     handleChange = (event) => {
         const newValue = event.target.value;
         this.setState({value: newValue});
-        if(this.props.actionChangeValue && (newValue !== STRING_DEFAULT_OPTION)){
+        if(this.props.actionChangeValue){
             this.props.actionChangeValue(newValue);
         }
     };

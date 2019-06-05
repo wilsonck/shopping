@@ -1,3 +1,5 @@
+'use strict';
+
 const Products = require('../models/Products');
 const get = require('lodash/get');
 

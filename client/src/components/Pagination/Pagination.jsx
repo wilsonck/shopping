@@ -19,6 +19,7 @@ class Pagination  extends Component{
         if(prevProps.totalItens !== this.props.totalItens || prevProps.currentPage !== this.props.currentPage){
             this.setTotalPages(this.props.totalItens);
             this.setCurrentPage(this.props.currentPage);
+            // this.renderPages();
         }
 
     }

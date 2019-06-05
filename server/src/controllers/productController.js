@@ -1,4 +1,5 @@
-// 'use strict';
+'use strict';
+
 //Lodash
 const orderBy = require('lodash/orderBy');
 const get = require('lodash/get');
@@ -40,25 +41,30 @@ const createObjectReturn = (products, totalProducts) =>  {
  */
 exports.get = (req, res, next) => {
     let productsFiltred = getProducts();
+    let filter = false;
     
-    const totalProducts = productsFiltred.length;
+    let totalProducts = productsFiltred.length;
 
-    
     if(req.query.brandId) {
         const brandId = req.query.brandId;
-        console.log(brandId);
         productsFiltred = productsFiltred.filter( p => Number(p.brandId) === Number(brandId));
+        filter = true;
     }
     
     if(['asc','desc'].includes(req.query.orderPrice)) {
         const orderPrice = req.query.orderPrice
-        productsFiltred = orderBy(productsFiltred, ['price'], [orderPrice.toLowerCase()])
+        productsFiltred = orderBy(productsFiltred, ['price'], [orderPrice.toLowerCase()]);
+        filter = true;
     }
 
     const pageSize = get(req.query, "page_size", -1);
     //Check if necessary to do pagination
     if(pageSize && Number(pageSize) !== Number(noPagination) && productsFiltred.length > pageSize) {
-        productsFiltred = Pagination(productsFiltred, Number(get(req.query, "page")), pageSize)
+        productsFiltred = Pagination(productsFiltred, Number(get(req.query, "page")), pageSize);
+    }
+
+    if (filter){
+        totalProducts = productsFiltred.length;
     }
 
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
