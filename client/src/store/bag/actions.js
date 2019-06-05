@@ -33,7 +33,6 @@ const addProductCart =  (productId) =>  {
     return async dispatch => {
         try {
             const bag = await bagService.save(objectRequest(productId));
-            console.log("bag --> ",bag);
             dispatch({ 
                 type: `${reducerType.toUpperCase()}_ADD_PRODUCT_CART`, 
                 payload: bag 
@@ -50,27 +49,10 @@ const addProductCart =  (productId) =>  {
 const removeProductToCart =  (productId) =>  {
     return async dispatch => {
         try {
-            const bag = await bagService.remove(productId);
+            await bagService.remove(productId);
             dispatch({ 
                 type: `${reducerType.toUpperCase()}_REMOVE_PRODUCT_CART`, 
-                payload: bag 
-            });
-        } catch(error) {
-            console.error(error)
-        }
-    };
-}
-
-/**
- * Fetches fetchProducts
- */
-const removeProductCart =  (productId) =>  {
-    return async dispatch => {
-        try {
-            const bag = await bagService.remove(productId);
-            dispatch({ 
-                type: `${reducerType.toUpperCase()}_REMOVE_PRODUCT_CART`, 
-                payload: bag 
+                payload: { productId: productId } 
             });
         } catch(error) {
             console.error(error)

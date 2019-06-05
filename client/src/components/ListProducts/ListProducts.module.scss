@@ -2,19 +2,22 @@
 
 $size-button-remove: 2rem;
 
-.ListBag{
+.ListProducts{
 
     width:27rem;
+
+    max-height: 29rem;
+    overflow-y: auto;
 
     .Product{
         border-bottom: 1px solid #d9d9d9;
         padding:2rem 1.5rem;
         display: block;
         position: relative;
-        height:11rem;
+        height:9rem;
 
         .Image{
-            width:6rem;
+            width:4rem;
             float:left;
             margin-right:1.3rem;
         }
@@ -44,20 +47,19 @@ $size-button-remove: 2rem;
 
     }
 
-    .Total{
-        text-transform: uppercase;
-        padding: 1.5rem 1rem;
-        margin-bottom:1rem;
-        width:23rem;
-        margin-left:2rem;
-        margin-top:1rem;
+}
 
-        border-bottom:1px dotted #d9d9d9;
+.Total{
+    text-transform: uppercase;
+    padding: 1.5rem 1rem;
+    margin-bottom:.5rem;
+    width:23rem;
+    margin-left:2rem;
+    margin-top:1rem;
 
-        span{
-            float:right;
-        }
+    border-bottom:1px dotted #d9d9d9;
+
+    span{
+        float:right;
     }
-
-
 }

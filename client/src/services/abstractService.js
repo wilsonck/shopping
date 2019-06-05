@@ -66,8 +66,8 @@ class abstractService {
      * @param {*} updatedAttributes - Attributes to be updated.
      */
     async update(elementId, updatedAttributes) {
-        const url =  `${this.endPoint}/${elementId}`;
-        let response = await axios.patch(url, updatedAttributes);
+        const url =  `${this.endPoint}${elementId}`;
+        let response = await requestService.patch(url, updatedAttributes);
         return response.data.data.data;
     }
 
@@ -77,7 +77,7 @@ class abstractService {
      */
     async remove(elementId) {
         const url =  `${this.endPoint}/${elementId}`;
-        const response = await axios.delete(url);
+        const response = await requestService.delete(url);
         return response.data.data;
     }
 }

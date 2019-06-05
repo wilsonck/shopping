@@ -43,19 +43,21 @@ exports.get = (req, res, next) => {
     
     const totalProducts = productsFiltred.length;
 
+    
     if(req.query.brandId) {
-        const brandId = req.query.brandId
-        productsFiltred = productsFiltred.filter( p => p.brandId == brandId);
+        const brandId = req.query.brandId;
+        console.log(brandId);
+        productsFiltred = productsFiltred.filter( p => Number(p.brandId) === Number(brandId));
     }
-
+    
     if(['asc','desc'].includes(req.query.orderPrice)) {
         const orderPrice = req.query.orderPrice
         productsFiltred = orderBy(productsFiltred, ['price'], [orderPrice.toLowerCase()])
     }
 
-    const pageSize = get(req.query, "page_size", null);
+    const pageSize = get(req.query, "page_size", -1);
     //Check if necessary to do pagination
-    if(pageSize && pageSize !== noPagination && productsFiltred.length > pageSize) {
+    if(pageSize && Number(pageSize) !== Number(noPagination) && productsFiltred.length > pageSize) {
         productsFiltred = Pagination(productsFiltred, Number(get(req.query, "page")), pageSize)
     }
 

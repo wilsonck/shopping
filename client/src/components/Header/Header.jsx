@@ -2,7 +2,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 
 import BadgeIcon from "../BadgeIcon/BadgeIcon";
-import ListBag from "../ListBag/ListBag";
+import ListProducts from "../ListProducts/ListProducts";
 
 import { ReactComponent as BagIcon } from '../../assets/svg/bag.svg';
 import { ReactComponent as WishListIcon } from '../../assets/svg/wishlist.svg';
@@ -21,16 +21,18 @@ function Header({
 }) {
 
     const wishListContent = () => {
-        return (<ListBag 
-            bagData={wishListData} 
-            removeToCart={removeToWishList} />
+        return (<ListProducts 
+            dataList={wishListData} 
+            removeToList={removeToWishList} 
+            showValues={false}/>
         );
     }
 
     const bagContent = () => {
-        return (<ListBag 
-                    bagData={bagData} 
-                    removeToCart={removeToCart} />
+        return (<ListProducts 
+                    dataList={bagData.products} 
+                    removeToList={removeToCart}
+                    total={bagData.total} />
                 );
     }
 
@@ -51,7 +53,7 @@ function Header({
                     </div>
                 </Popover>
 
-                <Popover placement={'bottom'} content={wishListContent()}>
+                <Popover className={classes.MainPopover} placement={'bottom'} content={wishListContent()}>
                     {/* WishList */}
                     <div className={classes.Popover}>
                         <BadgeIcon

@@ -38,20 +38,24 @@ exports.post = (req, res, next) => {
     }
 
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.status(201).send(createObjectReturn(req.session.bag));
+    res.status(201).send(createObjectReturn(item));
 };
 
 
 exports.delete = (req, res, next) => {
     
-    const id = req.params.productId;
+    const objectReturn = {
+        productId: req.params.id
+    };
     
     let bag = [];
 
     if(req.session.bag) {
-        bag = req.session.bag.filter(b => b.productId !== id);
+        bag = req.session.bag.filter(b => b.productId !== objectReturn.productId);
     }
     
+    req.session.bag = bag;
+
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.status(201).send(createObjectReturn(bag));
+    res.status(201).send(createObjectReturn(objectReturn));
 };

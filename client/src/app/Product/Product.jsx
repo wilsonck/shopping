@@ -29,33 +29,47 @@ class Product extends Component{
             "page": currentPage, 
             "page_size": ConfigPagination.ItensPerPage
         }
-        console.log(currentPage);
         this.props.fetchProducts( pagination );
     }
 
     /**
      * Call the Fetch the products sort by Price
      */
-    sortProductsByPrice = (sortType) =>  {
-        this.props.fetchProducts( { orderPrice: sortType });
+    sortProductsByPrice = async (sortType) =>  {
+        await this.setCurrentPage(1);
+        const where = {
+            "page": this.state.currentPage,
+            "page_size": ConfigPagination.ItensPerPage,
+            orderPrice: sortType
+        }
+        this.props.fetchProducts( where );
     } 
 
     /**
      * Call the Fetch the products sort by Brand
      */
-    sortProductsByBrand = (brandId) => {
-        this.props.fetchProducts( { brandId });
+    sortProductsByBrand =  async (brandId) => {
+        await this.setCurrentPage(1);
+        const where = {
+            "page": this.state.currentPage, 
+            "page_size": ConfigPagination.ItensPerPage,
+            brandId
+        }
+        this.props.fetchProducts( where );
+    }
+
+    setCurrentPage = (page) => {
+        this.setState({
+            currentPage: page
+        });
     }
 
     /**
      * Handle the change page in pagination 
      */
     changePage = (pageId) => {
-        this.setState({
-            currentPage: pageId
-        });
+        this.setCurrentPage(pageId);
         this.getProducts(pageId);
-        console.log("fetch page: ", pageId);
     }
 
     /**
@@ -114,6 +128,7 @@ class Product extends Component{
                 <Pagination 
                     itensPerPage={ConfigPagination.ItensPerPage}
                     totalItens={meta}
+                    currentPage={ this.state.currentPage}
                     changePage={this.changePage}/>
             </div>
         );

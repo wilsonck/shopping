@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-import classes from './Pagination.module.scss';
-
 import { ReactComponent as ArrowLeft } from '../../assets/svg/arrow-left.svg';
 import { ReactComponent as ArrowRight } from '../../assets/svg/arrow-right.svg';
 
 import { getClassesToApply } from '../../helpers/formatter/Classes';
+
+import classes from './Pagination.module.scss';
 class Pagination  extends Component{
 
     state = { 
@@ -15,9 +15,10 @@ class Pagination  extends Component{
         pages: 0
     };
 
-    componentDidUpdate(prevProps){
-        if(prevProps.totalItens !== this.props.totalItens){
+    async componentDidUpdate(prevProps){
+        if(prevProps.totalItens !== this.props.totalItens || prevProps.currentPage !== this.props.currentPage){
             this.setTotalPages(this.props.totalItens);
+            this.setCurrentPage(this.props.currentPage);
         }
 
     }
@@ -63,10 +64,14 @@ class Pagination  extends Component{
     }
 
     renderPages = () => {
+        const { currentPage } = this.state;
         const arrayPages = this.buildArrayPages(this.state.pages);
-        return arrayPages.map((page, index) => (<li key={`pg-${index}`} className={classes.PaginationItem}>
-                    <a onClick={() => this.changePage(index+1)} href="#" className={classes.PaginationLink}>{page}</a>
-                </li>));
+        return arrayPages.map((page, index) => {
+            const classToApply = currentPage === page ? getClassesToApply(classes.PageCurrent, classes.PaginationLink) : classes.PaginationLink;
+            return (<li key={`pg-${index}`} className={classes.PaginationItem}>
+                    <a onClick={() => this.changePage(index+1)} href="#/" className={classToApply}>{page}</a>
+                </li>);
+        });
     }
 
     
@@ -80,7 +85,7 @@ class Pagination  extends Component{
                 <ul className={classes.Pagination__list}>
                     
                     <li className={classes.PaginationItem}>
-                        <a onClick={() => this.prevNextPage("prev")} href="#" className={classBtnPrev}>
+                        <a onClick={() => this.prevNextPage("prev")} href="#/" className={classBtnPrev}>
                             <ArrowLeft className="icon" />
                         </a>
                     </li>
@@ -88,12 +93,10 @@ class Pagination  extends Component{
                     {this.renderPages(this.state.pages)}
 
                     <li className={classes.PaginationItem}>
-                        <a onClick={() => this.prevNextPage("next")} className={classBtnNext}>
+                        <a onClick={() => this.prevNextPage("next")} href="#/" className={classBtnNext}>
                             <ArrowRight className="icon" />
                         </a>
                     </li>
-
-
 
                 </ul>
             </nav>

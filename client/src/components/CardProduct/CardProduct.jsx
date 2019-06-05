@@ -5,8 +5,6 @@ import { ReactComponent as WishListIcon } from '../../assets/svg/wishlist.svg';
 import Price from "../Price/Price";
 import Button from "../Button/Button";
 
-import { getClassesToApply } from '../../helpers/formatter/Classes';
-
 import classes from './CardProduct.module.scss';
 
 function CardProduct({

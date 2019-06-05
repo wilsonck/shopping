@@ -27,6 +27,14 @@
                 justify-content: center;
                 align-items: center;
                 color: #444A59;
+                cursor: pointer;
+                
+                &.PageCurrent{
+                    font-size:1.8rem;
+                    font-weight: bold;
+                    pointer-events: none;
+                    color:#358ED7;
+                }
 
                 &:hover{
                     text-decoration: underline;

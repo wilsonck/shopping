@@ -13,12 +13,11 @@ const reducerType = "bag"
  */
 const calculateToTalCart = (products = []) => {
     let totalCart = 0;
-    products.forEach(prod => totalCart = Number(prod.quantity) * Number(prod.price));
+    products.forEach(prod => totalCart += Number(prod.quantity) * Number(prod.price));
     return totalCart;
 };
 
-
-const productsReducer = (state = initialState, action) => {
+const bagsReducer = (state = initialState, action) => {
 
     const constBaseName = reducerType.toUpperCase();
 
@@ -35,39 +34,33 @@ const productsReducer = (state = initialState, action) => {
         };
 
         case `${constBaseName}_ADD_PRODUCT_CART`:
-            const productsCart = action.payload.data;
-            const newItem = {
-                products: productsCart,
-                total: calculateToTalCart(productsCart)
-            };
-            const newState = { 
-                ...state, 
-                [reducerType]: newItem 
-            };
-            return newState;
-
-        case `${constBaseName}_EDIT`:
-            const newStationTypes = [...state[reducerType]];
-            newStationTypes[state[reducerType].findIndex(st => st.id === action.payload.id)] = {...action.payload}
-            return { 
-                ...state, 
-                [reducerType]: newStationTypes 
-            };
+                const newItem = action.payload;
+                const arrayProducts = [newItem, ...state[reducerType].products];
+                const newStateWithNewProduct = {
+                    ...state, 
+                    [reducerType]: {
+                        products: arrayProducts,
+                        total: calculateToTalCart(arrayProducts)
+                    }
+                }
+                return newStateWithNewProduct;
 
         case `${constBaseName}_REMOVE_PRODUCT_CART`:
-            const deleteBag = {
-                products: action.payload,
-                total: calculateToTalCart(action.payload)
-            };
-            return { 
+
+            const removeProduct = state[reducerType].products.filter(st => st.productId !== action.payload.productId);
+            const newState = { 
                 ...state, 
-                [reducerType]: deleteBag, 
-                "meta": action.payload.meta 
+                [reducerType]: {
+                    products: removeProduct,
+                    total: calculateToTalCart(removeProduct) 
+                }
             };
+            return newState ;
+
 
         default:
           return state;
       }
   };
 
-  export default productsReducer;
+  export default bagsReducer;

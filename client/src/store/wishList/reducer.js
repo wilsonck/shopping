@@ -13,34 +13,24 @@ const productsReducer = (state = initialState, action) => {
         case `${constBaseName}_FETCH_ALL`:
         return { 
             ...state, 
-            [reducerType]: action.payload, 
-            "meta": action.payload.meta 
+            [reducerType]: action.payload.data
         };
 
         case `${constBaseName}_ADD_PRODUCT_WISHLIST`:
+                const newItem = action.payload;
+                const arrayProducts = [newItem, ...state[reducerType]];
+                return {
+                    ...state, 
+                    [reducerType]: arrayProducts
+                }
+
+        case `${constBaseName}_REMOVE_PRODUCT_WISHLIST`:
+            const removeProduct = state[reducerType].filter(st => st.productId !== action.payload.productId);
             const newState = { 
                 ...state, 
-                [reducerType]: [...state, action.payload]
+                [reducerType]: removeProduct
             };
-            return newState;
-
-        case `${constBaseName}_EDIT`:
-            const newStationTypes = [...state[reducerType]];
-            newStationTypes[state[reducerType].findIndex(st => st.id === action.payload.id)] = {...action.payload}
-            return { 
-                ...state, 
-                [reducerType]: newStationTypes 
-            };
-
-        case `${constBaseName}_REMOVE_PRODUCT_CART`:
-            const deleteBag = {
-                [reducerType]: action.payload,
-            };
-            return { 
-                ...state, 
-                [reducerType]: deleteBag, 
-                "meta": action.payload.meta 
-            };
+            return newState ;
 
         default:
           return state;

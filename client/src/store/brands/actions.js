@@ -12,7 +12,7 @@ const fetchBrands =  () =>  {
             const brands = await brandsService.findAll();
             dispatch({ 
                 type: `${reducerType.toUpperCase()}_FETCH_ALL`, 
-                payload: brands 
+                payload: brands
             });
         } catch(error) {
             console.error(error)
