@@ -41,8 +41,8 @@ function Price({
 }
 
 Price.propTypes = {
-    regularPrice: PropTypes.number,
-    discountPrice: PropTypes.number 
+    regularPrice: PropTypes.string,
+    discountPrice: PropTypes.string 
 };
 
 

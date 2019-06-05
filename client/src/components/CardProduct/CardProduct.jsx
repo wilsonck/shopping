@@ -57,12 +57,12 @@ function CardProduct({
 }
 
 CardProduct.propTypes = {
-    productId: PropTypes.number,
+    productId: PropTypes.string,
     brandName: PropTypes.string,
     productImage: PropTypes.string,
     productName: PropTypes.string,
-    regularPrice: PropTypes.number,
-    discountPrice: PropTypes.number,
+    regularPrice: PropTypes.string,
+    discountPrice: PropTypes.string,
     isIntheCart: PropTypes.bool,
     isInWishList: PropTypes.bool,
     addToCart: PropTypes.func,

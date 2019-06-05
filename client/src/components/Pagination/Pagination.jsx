@@ -87,7 +87,7 @@ class Pagination  extends Component{
                     
                     <li className={classes.PaginationItem}>
                         <a onClick={() => this.prevNextPage("prev")} href="#/" className={classBtnPrev}>
-                            <ArrowLeft className="icon" />
+                            <ArrowLeft className="BtnPrev" />
                         </a>
                     </li>
 
@@ -107,14 +107,14 @@ class Pagination  extends Component{
 }
 
 
-ListProducts.propTypes = {
+Pagination.propTypes = {
     itensPerPage: PropTypes.number,
     totalItens: PropTypes.number,
     currentPage: PropTypes.number,
     changePage: PropTypes.func
 };
 
-ListProducts.defaultProps = {
+Pagination.defaultProps = {
     itensPerPage: 6,
     currentPage: 1,
     changePage: () => {},

@@ -72,7 +72,7 @@ function Header({
 }
 
 Header.propTypes = {
-    bagData: PropTypes.array,
+    bagData: PropTypes.object,
     wishListData: PropTypes.array,
     removeToCart: PropTypes.func,
     removeToWishList: PropTypes.func
