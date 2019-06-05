@@ -19,49 +19,39 @@ O server vai funcionar na porta 5000  [http://localhost:5000](http://localhost:5
 
 ## APIS:
 
-### Produtos
+### Product
 
-#### GET
-http://localhost:5000/products/?page=1&page_size=10
-http://localhost:5000/products
+* [GET] - /products - Retorna todos os produtos.
+* [GET] - /products?page={page}&page_size={size} - Retorna todos os produtos paginado
 
-### Brands 
+### Brands
 
-#### GET
-http://localhost:5000/brands/?page=1&page_size=10
-http://localhost:5000/brands
+* [GET] - /brands - responsavel pelo request das brands
+* [GET] - /products?page={page}&page_size={size} - Retorna todos as brands paginada
 
-### Wishlist 
+### Wish List
 
-#### GET
-http://localhost:5000/wishList
-
-#### POST
-http://localhost:5000/wishList
-Request Payload - exemplo
+* [GET] - /wishlist - Retorna todos os produtos que estão na wishlist do usuário
+* [POST] - /wishlist - Coloca um produto na wishlist do usuário
+```json
 {
-    productId: "4"
+    "productId": "4",
+
 }
+```
+* [DELETE] - /wishlist/{productId} - remove produto da wishlist do usuário
 
-#### DELETE
-http://localhost:5000/wishList/1
+### Bag
 
-
-### BAG 
-
-#### GET
-http://localhost:5000/bag
-
-#### POST
-http://localhost:5000/bag
-Request Payload - exemplo
+* [GET] - /bag - Retorna todos os produtos que estão na Bag do usuário
+* [POST] - /bag - Coloca um produto na Bag do usuário
+```json
 {
-    productId: "4",
-    quantity: 1
+    "productId": "4",
+    "quantity": 1
 }
-
-#### DELETE
-http://localhost:5000/bag/1
+```
+* [DELETE] - /bag/{productId} - remove produto da Bag do usuário
 
 
 ### Testes
