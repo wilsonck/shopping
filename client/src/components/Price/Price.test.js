@@ -1,32 +1,58 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import { shallow, configure } from 'enzyme';
 
-import Header from './Header';
-import classes from './Header.module.scss';
-import Navigation from '../Navigation/Navigation';
+import Price from "./Price";
 
-describe('<Header />', () => {
+import classes from './Price.module.scss';
+
+configure({adapter: new Adapter()});
+
+describe('<Price />', () => {
     let wrapper;
 
     const props = {
-        title: "Vendor Management Tool",
-        renderContentsOnRight: () => (
-            <div>Hey</div>
-        )
+        regularPrice: 10,
+        discountPrice: 5,
     };
 
     beforeEach(() => {
-        wrapper = shallow(<Header {...props} /> );
+        wrapper = shallow(<Price {...props} /> );
     });
 
-    it('should render <Header /> component', () => {
-        expect(wrapper.exists(`header.${classes.Header}`)).toBe(true);
-        expect(wrapper.exists(`div.${classes.Title}`)).toBe(true);
-        expect(wrapper.find(Navigation)).toHaveLength(1);
+    it('should render <Price /> with discount price', () => {
+
+        const RegularPrice = wrapper.find(`span.${classes.Strike}`);
+        expect(RegularPrice).toHaveLength(1);
+        expect(RegularPrice.text()).toBe("£10");
+
+        const DisccountPrice = wrapper.find(`span.${classes.Discounted}`);
+        expect(DisccountPrice).toHaveLength(1);
+        expect(DisccountPrice.text()).toBe("£5");
+
+        const Price = wrapper.find(`span.${classes.Price}`);
+        expect(Price).toHaveLength(0);
+        
     });
 
-    it('should render content on the right side if specified', () => {
-        expect(wrapper.contains(<div>Hey</div>)).toBe(true);
+    it('should render <BadgeIcon />  with regular price only', () => {
+
+        wrapper.setProps({
+            regularPrice: 100,
+            discountPrice: null
+        });
+
+        const RegularPrice = wrapper.find(`span.${classes.Strike}`);
+        expect(RegularPrice).toHaveLength(0);
+
+        const DisccountPrice = wrapper.find(`span.${classes.Discounted}`);
+        expect(DisccountPrice).toHaveLength(0);
+
+        const Price = wrapper.find(`span.${classes.Price}`);
+        expect(Price).toHaveLength(1);
+        expect(Price.text()).toBe("£100");
+
     });
+
 });
 

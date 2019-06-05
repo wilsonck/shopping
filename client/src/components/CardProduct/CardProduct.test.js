@@ -1,32 +1,65 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import { shallow, configure } from 'enzyme';
 
-import Header from './Header';
-import classes from './Header.module.scss';
-import Navigation from '../Navigation/Navigation';
+import CardProduct from './CardProduct';
+import Price from "../Price/Price";
+import Button from "../Button/Button";
 
-describe('<Header />', () => {
+import classes from './CardProduct.module.scss';
+
+configure({adapter: new Adapter()});
+
+describe('<CardProduct />', () => {
     let wrapper;
 
     const props = {
-        title: "Vendor Management Tool",
-        renderContentsOnRight: () => (
-            <div>Hey</div>
-        )
+        brandName: "Brand Name",
+        productName: "Product Name",
+        isIntheCart: false,
+        isInWishList: false,
     };
 
     beforeEach(() => {
-        wrapper = shallow(<Header {...props} /> );
+        wrapper = shallow(<CardProduct {...props} /> );
     });
 
-    it('should render <Header /> component', () => {
-        expect(wrapper.exists(`header.${classes.Header}`)).toBe(true);
-        expect(wrapper.exists(`div.${classes.Title}`)).toBe(true);
-        expect(wrapper.find(Navigation)).toHaveLength(1);
+    it('should render <CardProduct /> component', () => {
+
+        expect(wrapper.exists(`article.${classes.Product}`)).toBe(true);
+
+        expect(wrapper.find(Button)).toHaveLength(2);
+        expect(wrapper.find(Price)).toHaveLength(1);
+
+        const BrandName = wrapper.find(`h1.${classes.Product__title}`);
+        expect(BrandName).toHaveLength(1);
+        expect(BrandName.text()).toBe("Brand Name");
+
+        const ProductName = wrapper.find(`p.${classes.Product__subtitle}`);
+        expect(ProductName).toHaveLength(1);
+        expect(ProductName.text()).toBe("Product Name");
+
+        //Check the name button
+        expect(wrapper.find(Button).last().children().text()).toBe("Add to Cart");
+        
     });
 
-    it('should render content on the right side if specified', () => {
-        expect(wrapper.contains(<div>Hey</div>)).toBe(true);
+    it('should render <CardProduct /> component with Add Cart and Add Wish disabled', () => {
+
+        wrapper.setProps({
+            isIntheCart: true,
+            isInWishList: true
+        });
+
+        const WishListButton = wrapper.find(`Button.${classes.ButtonInWishList}`);
+        expect(WishListButton).toHaveLength(1);
+
+        const CartButton = wrapper.find(`Button.${classes.ButtonInCart}`);
+        expect(CartButton).toHaveLength(1);
+        expect(CartButton.children().text()).toBe("In Cart");
+       
     });
+
+    
 });
 

@@ -1,32 +1,30 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import { shallow, configure } from 'enzyme';
 
-import Header from './Header';
-import classes from './Header.module.scss';
-import Navigation from '../Navigation/Navigation';
+import Footer from "./Footer";
 
-describe('<Header />', () => {
+import classes from './Footer.module.scss';
+
+configure({adapter: new Adapter()});
+
+describe('<Footer />', () => {
     let wrapper;
 
-    const props = {
-        title: "Vendor Management Tool",
-        renderContentsOnRight: () => (
-            <div>Hey</div>
-        )
-    };
-
     beforeEach(() => {
-        wrapper = shallow(<Header {...props} /> );
+        wrapper = shallow(<Footer  /> );
     });
 
-    it('should render <Header /> component', () => {
-        expect(wrapper.exists(`header.${classes.Header}`)).toBe(true);
-        expect(wrapper.exists(`div.${classes.Title}`)).toBe(true);
-        expect(wrapper.find(Navigation)).toHaveLength(1);
+    it('should render <Footer />', () => {
+
+        const Footer = wrapper.find(`footer.container`);
+        expect(Footer).toHaveLength(1);
+
+        const Paragraph = wrapper.find(`p.${classes.Footer__sidenote}`);
+        expect(Paragraph).toHaveLength(1);
+        expect(Paragraph.text()).toBe("Footer");
+        
     });
 
-    it('should render content on the right side if specified', () => {
-        expect(wrapper.contains(<div>Hey</div>)).toBe(true);
-    });
 });
 

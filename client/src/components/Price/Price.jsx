@@ -25,7 +25,7 @@ function Price({
             return (
                 <Fragment>
                     {buildPrice(regularPrice, DEFAULT_CLASS_STRIKE)}
-                    {buildPrice(regularPrice, DEFAULT_CLASS_DISCOUNTED)}
+                    {buildPrice(discountPrice, DEFAULT_CLASS_DISCOUNTED)}
                 </Fragment>
             )
         }
@@ -41,8 +41,8 @@ function Price({
 }
 
 Price.propTypes = {
-    regularPrice: PropTypes.string,
-    discountPrice: PropTypes.string 
+    regularPrice: PropTypes.number,
+    discountPrice: PropTypes.number 
 };
 
 Price.defaultProps = {

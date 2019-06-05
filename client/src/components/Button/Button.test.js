@@ -43,6 +43,7 @@ describe('<Button />', () => {
             disabled: true
         })
         const button = wrapper.find("button");
+        expect(button.is('[disabled]')).toBe(true);
     });
 
 });
