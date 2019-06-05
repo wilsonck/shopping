@@ -24,16 +24,18 @@ function Header({
         return (<ListProducts 
             dataList={wishListData} 
             removeToList={removeToWishList} 
-            showValues={false}/>
-        );
+            showValues={false}
+            messageToEmptyList="No products in your Wish List"
+        />);
     }
 
     const bagContent = () => {
         return (<ListProducts 
                     dataList={bagData.products} 
                     removeToList={removeToCart}
-                    total={bagData.total} />
-                );
+                    total={bagData.total} 
+                    messageToEmptyList="No products in your Bag"
+                />);
     }
 
     return (
