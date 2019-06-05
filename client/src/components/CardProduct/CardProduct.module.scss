@@ -53,29 +53,12 @@
                 color: $color-dark;
             }
 
-            &__price {
-                padding-bottom: 2rem;
-                
-                font-family: 'Lato-Bold', sans-serif;
-                font-size: 1.4rem;
-                letter-spacing: .2.33px;
-
-                .Product__price__strike {
-                    margin-right: 1rem;
-                    text-decoration: line-through;
-                }
-                
-                .Product__price__discounted {
-                    color: $red;
-                }
-
-            }
-
         }
 
         .ButtonInCart {
             pointer-events: none;
-            background-color: #d9d9d9;
+            background-color: $color-gray;
+            color: $color-black
         }
 
     }
@@ -91,10 +74,20 @@
 
         padding:.8rem;
 
+        cursor: pointer;
+
         &:hover{
             background: $color-white;
             svg > polygon{
-                fill:#444A59;
+                fill: $color-dark-gray;
+            }
+        }
+
+        &.ButtonInWishList{
+            background: $color-gray;
+            pointer-events: none;
+            svg > polygon{
+                fill: $color-dark-gray;
             }
         }
 

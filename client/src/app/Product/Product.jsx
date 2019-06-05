@@ -94,6 +94,20 @@ class Product extends Component{
     }
 
     /**
+     * Received a productId and check if this product there is in the bag, if there is return true else false
+     */
+    isProductInTheBag = (productId) => {
+        return this.props.bag.products.some(prod => prod.productId === productId);
+    }
+
+    /**
+     * Received a productId and check if this product there is in the WishList, if there is return true else false
+     */
+    isProductInWishList = (productId) => {
+        return this.props.wishList.some(prod => prod.productId === productId);
+    }
+
+    /**
      * Return all products render and check if the search return any products, we show a warning 
      */
     renderProducts = (products) => {
@@ -121,6 +135,8 @@ class Product extends Component{
                             regularPrice={prod.price}
                             discountPrice={prod.priceDiscounted}
                             brandName={prod.brand}
+                            isIntheCart={this.isProductInTheBag(prod.id)}
+                            isInWishList={this.isProductInWishList(prod.id)}
                         />
                 </li>
             );
@@ -158,12 +174,16 @@ class Product extends Component{
 
 const mapStateToProps = ({
     productsReducer: { products, meta },
-    brandsReducer: { brands }
+    brandsReducer: { brands },
+    bagReducer: { bag },
+    wishListReducer: { wishList }
 }) => {
     return {
         products,
         meta,
-        brands
+        brands,
+        bag,
+        wishList
     };
 }
 

@@ -1,9 +1,11 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { ReactComponent as WishListIcon } from '../../assets/svg/wishlist.svg';
 import Price from "../Price/Price";
 import Button from "../Button/Button";
+
+import { getClassesToApply } from '../../helpers/formatter/Classes';
 
 import classes from './CardProduct.module.scss';
 
@@ -15,6 +17,7 @@ function CardProduct({
     regularPrice,
     discountPrice,
     isIntheCart,
+    isInWishList,
     addToCart,
     addToWishList
 }) {
@@ -22,13 +25,15 @@ function CardProduct({
     const labelInTheCart = isIntheCart ? "In Cart" : "Add to Cart";
     const classBtnCart = isIntheCart ? classes.ButtonInCart : "";
 
+    const classBtninWishList = isInWishList ? getClassesToApply(classes.WishlistButton, classes.ButtonInWishList) : classes.WishlistButton;
+
     return (
         <article className={classes.Product} itemScope itemType="http://schema.org/Product">
             <figure className={classes.Figure}>
                 <img className={classes.Product__image} src={`http://localhost:5000/${productImage}`} alt="Product" itemProp="image"/>
                     <Button
-                        className={classes.WishlistButton}
-                        disabled={isIntheCart}
+                        className={classBtninWishList}
+                        disabled={isInWishList}
                         onClick={() => addToWishList(productId)}>
                         <WishListIcon className={classes.Icon} />
                     </Button>
@@ -52,11 +57,13 @@ function CardProduct({
 }
 
 CardProduct.propTypes = {
-    
+    isIntheCart: PropTypes.bool,
+    isInWishList: PropTypes.bool
 };
 
 CardProduct.defaultProps = {
-    isIntheCart: false
+    isIntheCart: false,
+    isInWishList: false
 };
 
 export default CardProduct;
