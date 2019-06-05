@@ -27,7 +27,7 @@ exports.post = (req, res, next) => {
     const item = {
         productId: get(product, "id"),
         name: get(product, "subtitle"),
-        quantity: 1,
+        quantity: get(req.body, "quantity"),
         price: get(product, "price"),
         image: get(product, "image")
     }
