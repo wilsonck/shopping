@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Select from "../Select/Select"
 import classes from './Filter.module.scss';
 
@@ -38,11 +38,15 @@ function Filter({
 }
 
 Filter.propTypes = {
-    
+    optionsBrands: PropTypes.array,
+    sortProductsByPrice: PropTypes.func,
+    sortProductsByBrand: PropTypes.func
 };
 
 Filter.defaultProps = {
-
+    optionsBrands: [],
+    sortProductsByPrice: () => {},
+    sortProductsByBrands: () => {},
 };
 
 export default Filter;

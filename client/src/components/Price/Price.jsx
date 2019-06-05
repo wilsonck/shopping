@@ -45,8 +45,5 @@ Price.propTypes = {
     discountPrice: PropTypes.number 
 };
 
-Price.defaultProps = {
-
-};
 
 export default Price;

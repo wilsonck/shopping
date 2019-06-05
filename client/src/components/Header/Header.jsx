@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import BadgeIcon from "../BadgeIcon/BadgeIcon";
 import ListProducts from "../ListProducts/ListProducts";
@@ -72,11 +72,17 @@ function Header({
 }
 
 Header.propTypes = {
-    
+    bagData: PropTypes.array,
+    wishListData: PropTypes.array,
+    removeToCart: PropTypes.func,
+    removeToWishList: PropTypes.func
 };
 
 Header.defaultProps = {
-
+    bagData: [],
+    wishListData: [],
+    removeToCart: () => {},
+    removeToWishList: () => {}
 };
 
 export default Header;

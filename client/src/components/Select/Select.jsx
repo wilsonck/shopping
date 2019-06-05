@@ -62,7 +62,7 @@ Select.propTypes = {
 };
 
 Select.defaultProps = {
-
+    options: [],
 };
 
 export default Select;

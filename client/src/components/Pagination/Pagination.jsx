@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { ReactComponent as ArrowLeft } from '../../assets/svg/arrow-left.svg';
 import { ReactComponent as ArrowRight } from '../../assets/svg/arrow-right.svg';
@@ -19,7 +20,6 @@ class Pagination  extends Component{
         if(prevProps.totalItens !== this.props.totalItens || prevProps.currentPage !== this.props.currentPage){
             this.setTotalPages(this.props.totalItens);
             this.setCurrentPage(this.props.currentPage);
-            // this.renderPages();
         }
 
     }
@@ -105,5 +105,19 @@ class Pagination  extends Component{
     }
     
 }
+
+
+ListProducts.propTypes = {
+    itensPerPage: PropTypes.number,
+    totalItens: PropTypes.number,
+    currentPage: PropTypes.number,
+    changePage: PropTypes.func
+};
+
+ListProducts.defaultProps = {
+    itensPerPage: 6,
+    currentPage: 1,
+    changePage: () => {},
+};
 
 export default Pagination;

@@ -71,7 +71,9 @@ CardProduct.propTypes = {
 
 CardProduct.defaultProps = {
     isIntheCart: false,
-    isInWishList: false
+    isInWishList: false,
+    addToCart: () => {},
+    addToWishList: () => {}
 };
 
 export default CardProduct;

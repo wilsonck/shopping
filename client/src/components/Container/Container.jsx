@@ -1,5 +1,4 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 
 import classes from './Container.module.scss';
 
@@ -15,13 +14,5 @@ function Header({
         </main>
     );
 }
-
-Header.propTypes = {
-    
-};
-
-Header.defaultProps = {
-
-};
 
 export default Header;
