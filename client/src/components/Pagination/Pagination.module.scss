@@ -2,8 +2,8 @@
 
 
 .Pagination {
-    height: 45px;
-    margin: 30px auto;
+    height: 4.5rem;
+    margin: 3rem auto;
     text-align: center;
 
     &__list {
@@ -14,9 +14,9 @@
 
         .PaginationItem{
             height: 100%;
-            width: 45px;
-            font-family: 'Lato-Bold', sans-serif;
-            font-size: 13px;
+            width: 4.5rem;
+            font-family: $font-bold, $second-font;
+            font-size: 1.3rem;
             letter-spacing: 1.39px;
             text-align: center;
 
@@ -26,14 +26,14 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                color: #444A59;
+                color: $color-dark-gray;
                 cursor: pointer;
                 
                 &.PageCurrent{
                     font-size:1.8rem;
                     font-weight: bold;
                     pointer-events: none;
-                    color:#358ED7;
+                    color: $blue;
                 }
 
                 &:hover{
@@ -42,7 +42,7 @@
 
                 .icon {
                     width: 8px;
-                    fill: #444A59;
+                    fill: $color-dark-gray;
                 }
             }
 

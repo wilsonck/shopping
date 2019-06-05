@@ -7,7 +7,7 @@ function Button({
     children,
     onClick,
     onBlur,
-    
+    disabled
 }) {
     const appliedClasses = [
         classes.Button

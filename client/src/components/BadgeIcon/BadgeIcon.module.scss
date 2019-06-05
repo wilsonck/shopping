@@ -30,13 +30,13 @@
             justify-content: center;
             align-items: center;
     
-            font-family: $font-bold, sans-serif;
+            font-family: $font-bold, $second-font;
             font-size: .8rem;
             text-align: center;
     
             border-radius: 50%;
-            color: #ffffff;
-            background-color: #358ED7;
+            color: $color-white;
+            background-color: $blue;
         }
     }
 }

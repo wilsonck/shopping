@@ -37,7 +37,7 @@
             &__title {
                 padding-bottom: 1rem; 
                 
-                font-family: 'Lato-Bold', sans-serif;
+                font-family: $font-bold, $second-font;
                 font-size: 1.4rem;
                 letter-spacing: 1.37px;
                 text-transform: uppercase;
@@ -96,7 +96,7 @@
             height:2rem;
 
             polygon{
-                fill: #D9D9E6;
+                fill: $color-gray-light2;
             }
         }
     }

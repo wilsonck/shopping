@@ -54,7 +54,6 @@ exports.get = (req, res, next) => {
     if(['asc','desc'].includes(req.query.orderPrice)) {
         const orderPrice = req.query.orderPrice
         productsFiltred = orderBy(productsFiltred, ['price'], [orderPrice.toLowerCase()]);
-        filter = true;
     }
 
     const pageSize = get(req.query, "page_size", -1);
