@@ -1,20 +1,39 @@
 # Test Front End
 
-Foi desenvolvida uma tela de produto em React com o server em NodeJs e Express, utilizando HTML% (enviadp pela empresa) e Sass.
+Foi desenvolvida uma tela de produto em React com o server em NodeJs e Express, utilizando HTML5 (enviado pela empresa) e Sass.
 
 O projeto está divido em 2 pastas: server e client.
 
 Para rodar a aplicação, inicie primeiro o server, para que a busca por produtos, brands, price e bag seja feito corretamente.
 
 # Server
-A parte do server foi desenvolvida em NoedeJS e Express, e está rodando na porta 5000 (http://localhost:5000). 
+A parte do server foi desenvolvida em NodeJS e Express, e está rodando na porta 5000 (http://localhost:5000). 
 Para a bag e wishlist estamos usando express-session.
 
 Foram desenvolvidas as seguintes api para controle da aplicação:
-* http://localhost:5000/products - GET --> Responsavel pelos requests dos produtos
-* http://localhost:5000/brands - GET --> responsavel pelo request das brands
-* http://localhost:5000/wishlist - GET - POST - DELETE --> responsavel por administrar post - delete e get da wishlist do usuário
-* http://localhost:5000/bag - GET - POST - DELETE --> responsavel por administrar post - delete e get da wishlist do usuário
+
+### Product
+
+* [GET] - /products - Retorna todos os produtos.
+* [GET] - /products?page={page}&page_size={size} - Retorna todos os produtos paginado
+
+### Brands
+
+* [GET] - /brands - responsavel pelo request das brands
+* [GET] - /products?page={page}&page_size={size} - Retorna todos as brands paginada
+
+### Wish List
+
+* [GET] - /wishlist - Retorna todos os produtos que estão na wishlist do usuário
+* [POST] - /wishlist - Coloca um produto na wishlist do usuário
+* [DELETE] - /wishlist/{productId} - remove produto da wishlist do usuário
+
+### Bag
+
+* [GET] - /bag - Retorna todos os produtos que estão na Bag do usuário
+* [POST] - /bag - Coloca um produto na Bag do usuário
+* [DELETE] - /bag/{productId} - remove produto da Bag do usuário
+
 
 [server/READM.ME](Para instalar o subir a aplicação acesse o readme do server).
 
