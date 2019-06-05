@@ -30,7 +30,7 @@ function CardProduct({
     return (
         <article className={classes.Product} itemScope itemType="http://schema.org/Product">
             <figure className={classes.Figure}>
-                <img className={classes.Product__image} src={`images/img01.png`} alt="Product" itemProp="image"/>
+                <img className={classes.Product__image} src={productImage} alt="Product" itemProp="image"/>
                     <Button
                         className={classBtninWishList}
                         disabled={isInWishList}
