@@ -12,8 +12,8 @@ describe('<Price />', () => {
     let wrapper;
 
     const props = {
-        regularPrice: 10,
-        discountPrice: 5,
+        regularPrice: '10',
+        discountPrice: '5',
     };
 
     beforeEach(() => {
@@ -38,7 +38,7 @@ describe('<Price />', () => {
     it('should render <BadgeIcon />  with regular price only', () => {
 
         wrapper.setProps({
-            regularPrice: 100,
+            regularPrice: '100',
             discountPrice: null
         });
 
