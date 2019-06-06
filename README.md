@@ -44,15 +44,22 @@ O client foi desenvolvido em React e Redux.
 
 ## Na tela de produtos contém as seguintes funcionalidades:
 
-* Listagem de produtos: São mostrados 6 produtos por página.
 * No header temos os botões:<br />
 
-    - Wishlist: quando o usuário clica no botão Wishlist, o produto é inserido na WishList, e a WishList no header é atualizado. Após essa ação o botão do produto fica desabilitado.
+    - Wishlist: Listagem dos produtos adicionados através dos botão no card. Cada item da lista tem um botão para remover.
 
-    - Cart: Quando o usuário adiciona um, produto ao carrimnho de compras, o label do botão troca automaticamente e ele fica desabilitado. O produto é adicionado ao carrinho e a some de todos os produtos é feito automaticamente.
+    - Bag: Listagem dos produtos adicionados para compra, com a soma de todos os produtos selecionados. Cada item da lista tem um botão para remover. A cada inclusão ou remoção de produtos o valor total é atualizado.
+
+* Listagem de produtos: 
+
+    - São mostrados 6 produtos por página.
+    - Botão "Add to Cart":  Adiciona o produto na Bag, somando-se com os demais que já se encontram, o label do botão troca automaticamente para "In Cart" e ele fica desabilitado. 
+    - Botão "WishList":  Adiciona o produto na WishList, o ícone muda de cor para sinalizar que foi selecionado e fica desabilitado. 
+    - Preço: Se o produto está com preço promocional o preço antigo é colocado com um um risco e o novo preço é destacado em vermelho.
 
 * Filtros - É possível fazer a busca de produtos por marca e ordenar os preços por Ascending e Descending. É possível mesclar as 2 buscas juntas.
-* Paginação: A paginação está considerando  a quantidade de 6 produtos por página.
-* Preço: Se o produto está com preço promocional o preço antigo é colocado com um um risco vermelho.
+
+* Paginação: A paginação está considerando a quantidade de 6 produtos por página.
+
 
 [Para instalar o subir a aplicação acesse o readme do client.](https://github.com/wilsonck/shopping/blob/master/client/README.md)
