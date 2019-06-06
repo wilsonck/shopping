@@ -47,9 +47,9 @@ O client foi desenvolvido em React e Redux.
 * Listagem de produtos: São mostrados 6 produtos por página.
 * No header temos os botões:<br />
 
-* Wishlist: quando o usuário clica no botão Wishlist, o produto é inserido na WishList, e a WishList no header é atualizado. Após essa ação o botão do produto fica desabilitado.
+    - Wishlist: quando o usuário clica no botão Wishlist, o produto é inserido na WishList, e a WishList no header é atualizado. Após essa ação o botão do produto fica desabilitado.
 
-* Cart: Quando o usuário adiciona um, produto ao carrimnho de compras, o label do botão troca automaticamente e ele fica desabilitado. O produto é adicionado ao carrinho e a some de todos os produtos é feito automaticamente.
+    - Cart: Quando o usuário adiciona um, produto ao carrimnho de compras, o label do botão troca automaticamente e ele fica desabilitado. O produto é adicionado ao carrinho e a some de todos os produtos é feito automaticamente.
 
 * Filtros - É possível fazer a busca de produtos por marca e ordenar os preços por Ascending e Descending. É possível mesclar as 2 buscas juntas.
 * Paginação: A paginação está considerando  a quantidade de 6 produtos por página.
