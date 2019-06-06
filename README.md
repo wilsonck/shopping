@@ -15,12 +15,12 @@ Foram desenvolvidas as seguintes api para controle da aplicação:
 ### Product
 
 * [GET] - /products - Retorna todos os produtos.
-* [GET] - /products?page={page}&page_size={size} - Retorna os produtos paginado.
+* [GET] - /products?page={page}&page_size={size} - Retorna os produtos paginados.
 
 ### Brands
 
 * [GET] - /brands - Retorna todas as brands.
-* [GET] - /products?page={page}&page_size={size} - Retorna todos as brands paginada.
+* [GET] - /products?page={page}&page_size={size} - Retorna as brands paginadas.
 
 ### Wish List
 
@@ -46,9 +46,9 @@ O client foi desenvolvido em React e Redux.
 
 * No header temos os botões:<br />
 
-    - Wishlist: Listagem dos produtos adicionados através dos botão no card. Cada item da lista tem um botão para remover.
+    - Wishlist: Listagem dos produtos adicionados através dos botões no card. Cada item da lista tem um botão para remover.
 
-    - Bag: Listagem dos produtos adicionados para compra, com a soma de todos os produtos selecionados. Cada item da lista tem um botão para remover. A cada inclusão ou remoção de produtos o valor total é atualizado.
+    - Bag: Listagem dos produtos adicionados para compra com a soma de todos os produtos selecionados. Cada item da lista tem um botão para remover. A cada inclusão ou remoção de produtos o valor total é atualizado.
 
 * Listagem de produtos: 
 

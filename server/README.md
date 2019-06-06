@@ -23,12 +23,12 @@ $ npm start
 ### Product
 
 * [GET] - /products - Retorna todos os produtos.
-* [GET] - /products?page={page}&page_size={size} - Retorna os produtos paginado.
+* [GET] - /products?page={page}&page_size={size} - Retorna os produtos paginados.
 
 ### Brands
 
 * [GET] - /brands - Retorna todas as brands.
-* [GET] - /products?page={page}&page_size={size} - Retorna todos as brands paginada.
+* [GET] - /products?page={page}&page_size={size} - Retorna as brands paginadas.
 
 ### Wish List
 
